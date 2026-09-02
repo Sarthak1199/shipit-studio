@@ -62,7 +62,7 @@ body {
   @apply font-mono text-[11px] uppercase tracking-[0.22em] text-muted;
 }
 .btn {
-  @apply inline-flex h-12 min-w-[44px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-300 will-change-transform;
+  @apply inline-flex h-12 min-w-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-[15px] font-medium transition-[background-color,border-color,color,transform] duration-300 will-change-transform;
 }
 .btn-primary {
   @apply bg-pop text-bg hover:bg-[#ff7a55];

@@ -55,7 +55,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
           <Reveal className="mt-12 grid gap-4 sm:grid-cols-3 md:mt-16" amount={0.2}>
             {cs.metrics.map((m, i) => (
-              <Item key={m.label}>
+              <Item key={m.value + m.label}>
                 <div className="card noise p-6 sm:p-8">
                   <div className="font-display text-[clamp(2.6rem,6vw,4.5rem)] font-extrabold tracking-[-0.04em]" style={{ color: i === 0 ? cs.accent : undefined }}>
                     <Odometer value={m.value} delay={i * 0.12} />
@@ -92,7 +92,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </Reveal>
           <Reveal className="mt-10 flex flex-wrap gap-3" amount={0.3}>
             {cs.metrics.map((m) => (
-              <Item key={m.label}>
+              <Item key={m.value + m.label}>
                 <div className="flex items-baseline gap-2 rounded-full border border-line bg-surface px-5 py-3">
                   <span className="font-display text-2xl font-extrabold">{m.value}</span>
                   <span className="text-muted">{m.label}</span>

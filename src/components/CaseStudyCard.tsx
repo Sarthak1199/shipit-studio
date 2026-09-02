@@ -17,7 +17,7 @@ export default function CaseStudyCard({ cs, index }: { cs: CaseStudy; index: num
         </div>
         <div className="mt-6 flex flex-wrap gap-2">
           {cs.metrics.map((m) => (
-            <span key={m.label} className="rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-[13px]">
+            <span key={m.value + m.label} className="rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-[13px]">
               <span className="font-semibold text-ink">{m.value}</span> <span className="text-muted">{m.label}</span>
             </span>
           ))}

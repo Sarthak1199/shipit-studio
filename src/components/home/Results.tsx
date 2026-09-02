@@ -45,8 +45,9 @@ export default function Results() {
                   <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-muted">saved per month</p>
                 </div>
                 <div>
-                  <div className="font-display text-[clamp(3.5rem,9vw,6.5rem)] font-extrabold tracking-[-0.04em] text-lime">
-                    <Odometer value="~160" delay={0.2} />
+                  <div className="flex items-baseline whitespace-nowrap font-display text-[clamp(3.5rem,9vw,6.5rem)] font-extrabold tracking-[-0.04em] text-lime">
+                    <span className="mr-1 font-serif text-[0.6em] font-normal italic text-muted">~</span>
+                    <Odometer value="160" delay={0.2} />
                     <span className="ml-2 font-serif text-[0.45em] font-normal italic text-ink">hrs</span>
                   </div>
                   <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-muted">saved per month</p>

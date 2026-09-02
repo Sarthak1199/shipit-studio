@@ -25,13 +25,13 @@ export default function Hero() {
       <div className="container-x">
         <motion.p
           initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25, duration: 0.7 }}
-          className="eyebrow flex items-center gap-3"
+          className="eyebrow flex items-start gap-3 text-[10px] leading-relaxed sm:items-center sm:text-[11px]"
         >
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-lime shadow-[0_0_12px_#D4FF4F]" />
+          <span className="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-lime shadow-[0_0_12px_#D4FF4F] sm:mt-0" />
           {site.tagline}
         </motion.p>
 
-        <h1 className="h-display mt-6 text-[clamp(2.9rem,11.5vw,9rem)]">
+        <h1 className="h-display mt-6 text-[clamp(2.5rem,10.5vw,9rem)]">
           <Word i={0}>Pick</Word> <Word i={1}>your</Word>{" "}
           <Word i={2} className="font-serif font-normal italic tracking-[-0.02em] text-pop">headache.</Word>
           <br />

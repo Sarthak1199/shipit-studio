@@ -13,9 +13,11 @@ export default function Odometer({ value, className, delay = 0 }: { value: strin
     <span ref={ref} className={cn("inline-flex leading-none", className)} aria-label={value} role="text">
       {value.split("").map((ch, i) =>
         /\d/.test(ch) ? (
-          <span key={i} className="relative inline-block h-[1em] overflow-hidden align-baseline" aria-hidden>
+          // width is sized by an invisible copy of the target digit, so columns don't gap
+          <span key={i} className="relative inline-block h-[1em] overflow-hidden leading-none" aria-hidden>
+            <span className="invisible">{ch}</span>
             <motion.span
-              className="flex flex-col"
+              className="absolute left-0 top-0 flex flex-col"
               initial={{ y: 0 }}
               animate={inView ? { y: `-${Number(ch)}em` } : { y: 0 }}
               transition={{ duration: 1.5 + i * 0.12, delay: delay + i * 0.05, ease: [0.16, 1, 0.3, 1] }}

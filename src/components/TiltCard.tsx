@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { cn } from "@/lib/cn";
 
-const MotionLink = motion(Link);
+const MotionLink = motion.create(Link);
 
 export default function TiltCard({
   children, className, href, max = 8,
