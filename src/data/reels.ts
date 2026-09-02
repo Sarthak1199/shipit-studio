@@ -1,10 +1,6 @@
-/**
- * Top 3 pinned reels from @sarthak.simplifies.ai.
- * Paste each reel's permalink (e.g. https://www.instagram.com/reel/XXXXXXXXX/).
- * Empty permalinks render a placeholder card that links to the profile.
- */
+/** Top 3 pinned reels from @sarthak.simplifies.ai (normalised to canonical /reel/ permalinks). */
 export const reels: { permalink: string; label: string }[] = [
-  { permalink: "", label: "Pinned reel 1" },
-  { permalink: "", label: "Pinned reel 2" },
-  { permalink: "", label: "Pinned reel 3" },
+  { permalink: "https://www.instagram.com/reel/DcgLGAuNnZ4/", label: "Pinned reel 1" },
+  { permalink: "https://www.instagram.com/reel/Dau0s6VJpMG/", label: "Pinned reel 2" },
+  { permalink: "https://www.instagram.com/reel/Db2-Mi6N5Mw/", label: "Pinned reel 3" },
 ];

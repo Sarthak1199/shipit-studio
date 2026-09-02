@@ -9,17 +9,16 @@ export const metadata: Metadata = { title: "Case studies", description: "Four bu
 export default function CaseStudiesPage() {
   return (
     <>
-      <section className="pt-32 sm:pt-40 md:pt-48">
+      <section className="relative overflow-hidden pt-32 sm:pt-40">
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[60vh] bg-[linear-gradient(180deg,#DFE7EC_0%,#F5F5F0_100%)]" />
         <div className="container-x">
-          <Reveal>
+          <Reveal className="text-center">
             <Item><p className="eyebrow">Case studies</p></Item>
-            <Item><h1 className="h-display mt-4 text-[clamp(2.8rem,9vw,7rem)]">Real headaches.<br /><span className="font-serif font-normal italic text-pop">Shipped</span> fixes.</h1></Item>
-            <Item><p className="mt-6 max-w-xl text-lg text-muted">Four builds across F&B, fintech, services and quick commerce. Every number below came from the client, not a deck.</p></Item>
+            <Item><h1 className="h-display mt-4 text-[clamp(2.6rem,6.5vw,5rem)]">Real headaches.<br /><em>Shipped</em> fixes.</h1></Item>
+            <Item><p className="mx-auto mt-6 max-w-xl text-lg text-muted">Four builds across F&B, fintech, services and quick commerce. Every number below came from the client, not a deck.</p></Item>
           </Reveal>
-          <Reveal className="mt-12 grid gap-4 pb-20 md:mt-16 md:grid-cols-2 md:pb-32" amount={0.1}>
-            {caseStudies.map((cs, i) => (
-              <Item key={cs.slug} className="h-full"><CaseStudyCard cs={cs} index={i} /></Item>
-            ))}
+          <Reveal className="mt-12 grid gap-5 pb-20 md:mt-16 md:grid-cols-2 md:pb-28" amount={0.1}>
+            {caseStudies.map((cs) => <Item key={cs.slug} className="h-full"><CaseStudyCard cs={cs} /></Item>)}
           </Reveal>
         </div>
       </section>

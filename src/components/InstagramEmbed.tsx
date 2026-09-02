@@ -32,7 +32,7 @@ export default function InstagramEmbed({ permalink }: { permalink: string }) {
 
   return (
     <blockquote
-      className="instagram-media !m-0 !min-w-0 !max-w-none !rounded-2xl !border-line !bg-surface"
+      className="instagram-media !m-0 !min-w-0 !max-w-none !border-0 !shadow-none"
       data-instgrm-permalink={permalink}
       data-instgrm-version="14"
       style={{ width: "100%" }}

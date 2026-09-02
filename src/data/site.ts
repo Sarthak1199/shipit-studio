@@ -1,12 +1,11 @@
 export const site = {
   name: "ShipIt Studio",
   tagline: "An AI studio that designs, ships, monitors and trains enterprises.",
-  // TODO: replace with the real Calendly link
-  calendly: "https://calendly.com/shipitstudio/demo",
+  calendly: "https://calendly.com/guptasarthak10/new-meeting",
   whatsapp:
     "https://wa.me/919711994275?text=" +
     encodeURIComponent("Hi, I'd like to know more about ShipIt Studio."),
-  instagram: "https://www.instagram.com/sarthak.simplifies.ai/",
+  instagram: "https://www.instagram.com/sarthak.simplifies.ai?igsi=dnVxdjAxdGM3cnk0&utm_source=qr",
   instagramHandle: "sarthak.simplifies.ai",
   phone: "+91 9711994275",
   phoneHref: "tel:+919711994275",

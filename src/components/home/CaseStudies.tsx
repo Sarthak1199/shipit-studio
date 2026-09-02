@@ -7,18 +7,14 @@ export default function CaseStudies() {
   return (
     <section id="case-studies" className="section scroll-mt-24">
       <div className="container-x">
-        <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <div>
-            <Item><p className="eyebrow">Case studies</p></Item>
-            <Item><h2 className="h-display mt-4 text-[clamp(2.4rem,7vw,5.5rem)]">Don&apos;t take our<br />word for it.</h2></Item>
-          </div>
-          <Item><Link href="/case-studies" className="btn btn-ghost">All case studies →</Link></Item>
+        <Reveal className="text-center">
+          <Item><p className="eyebrow">Case studies</p></Item>
+          <Item><h2 className="h-display mt-4 text-[clamp(2.2rem,5vw,3.9rem)]">Don&apos;t take our word<br />for <em>it.</em></h2></Item>
         </Reveal>
-        <Reveal className="mt-10 grid gap-4 md:mt-14 md:grid-cols-2" amount={0.1}>
-          {caseStudies.map((cs, i) => (
-            <Item key={cs.slug} className="h-full"><CaseStudyCard cs={cs} index={i} /></Item>
-          ))}
+        <Reveal className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2" amount={0.1}>
+          {caseStudies.map((cs) => <Item key={cs.slug} className="h-full"><CaseStudyCard cs={cs} /></Item>)}
         </Reveal>
+        <Reveal className="mt-10 text-center"><Item><Link href="/case-studies" className="btn btn-ghost">All case studies →</Link></Item></Reveal>
       </div>
     </section>
   );

@@ -5,42 +5,32 @@ import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/data/case-studies";
 import Odometer from "@/components/Odometer";
 import CTABand from "@/components/CTABand";
-import CaseStudyCard from "@/components/CaseStudyCard";
+import LazyVideo from "@/components/LazyVideo";
+import CaseStudyCard, { CaseMedia } from "@/components/CaseStudyCard";
 import { Reveal, Item } from "@/components/Reveal";
 
-export function generateStaticParams() {
-  return caseStudies.map((c) => ({ slug: c.slug }));
-}
-
+export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const cs = getCaseStudy(params.slug);
-  if (!cs) return {};
-  return { title: cs.client, description: cs.summary };
+  return cs ? { title: cs.client, description: cs.summary } : {};
 }
 
 export default function CaseStudyPage({ params }: { params: { slug: string } }) {
   const cs = getCaseStudy(params.slug);
   if (!cs) notFound();
   const others = caseStudies.filter((c) => c.slug !== cs.slug).slice(0, 2);
-  const blocks = [
-    { k: "Problem", v: cs.problem },
-    { k: "Solution", v: cs.solution },
-    { k: "Process", v: cs.process },
-  ];
+  const blocks = [{ k: "Problem", v: cs.problem }, { k: "Solution", v: cs.solution }, { k: "Process", v: cs.process }];
 
   return (
     <>
-      {/* sticky breadcrumb, sits just under the fixed nav */}
-      <div className="sticky top-[68px] z-30 sm:top-[84px]">
+      <div className="sticky top-[76px] z-30 sm:top-[80px]">
         <div className="container-x">
-          <Link href="/case-studies" className="glass inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line px-4 font-mono text-xs uppercase tracking-[0.18em] text-muted hover:text-ink">
-            ← All case studies
-          </Link>
+          <Link href="/case-studies" className="glass inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line px-4 font-mono text-xs uppercase tracking-[0.18em] text-muted shadow-soft hover:text-ink">← All case studies</Link>
         </div>
       </div>
 
-      <section className="relative overflow-hidden pt-24 sm:pt-28 md:pt-32">
-        <div aria-hidden className="pointer-events-none absolute right-[-10%] top-[-10%] -z-10 h-[50vw] w-[50vw] rounded-full opacity-30 blur-3xl" style={{ background: cs.accent }} />
+      <section className="relative overflow-hidden pt-24 sm:pt-28">
+        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[70vh] bg-[linear-gradient(180deg,#DFE7EC_0%,#F5F5F0_100%)]" />
         <div className="container-x">
           <Reveal>
             <Item>
@@ -49,18 +39,44 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
                 <p className="eyebrow">{cs.industry}</p>
               </div>
             </Item>
-            <Item><h1 className="h-display mt-5 text-[clamp(2.6rem,8vw,6.5rem)]">{cs.client}</h1></Item>
+            <Item><h1 className="h-display mt-5 max-w-4xl text-[clamp(2.4rem,6vw,4.8rem)]">{cs.client}</h1></Item>
             <Item><p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{cs.summary}</p></Item>
           </Reveal>
 
-          <Reveal className="mt-12 grid gap-4 sm:grid-cols-3 md:mt-16" amount={0.2}>
+          {/* media */}
+          <Reveal className="mt-12 grid gap-5 md:grid-cols-3" amount={0.2}>
+            <Item className="md:col-span-2">
+              <div className="group relative aspect-[16/10] overflow-hidden rounded-[28px] bg-surface2 shadow-soft">
+                <LazyVideo src={cs.video} className="absolute inset-0 h-full w-full object-cover" />
+                <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2">
+                  {cs.metrics.map((m) => (
+                    <span key={m.value + m.label} className="rounded-full bg-ink/75 px-3 py-1.5 text-xs text-white backdrop-blur-md"><b className="font-semibold">{m.value}</b> {m.label}</span>
+                  ))}
+                </div>
+              </div>
+            </Item>
+            <Item className="h-full">
+              {cs.media.type === "logo" ? (
+                <div className="group h-full min-h-[240px]"><CaseMedia cs={cs} className="h-full min-h-[240px] rounded-[28px] shadow-soft" /></div>
+              ) : (
+                <div className="relative h-full min-h-[240px] overflow-hidden rounded-[28px] shadow-soft">
+                  <Image src="/media/hill-sky.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
+                  <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/30 bg-white/70 p-4 backdrop-blur-md">
+                    <p className="eyebrow">{cs.industry}</p>
+                    <p className="mt-1 font-display text-lg italic">{cs.headline}</p>
+                  </div>
+                </div>
+              )}
+            </Item>
+          </Reveal>
+
+          {/* metrics */}
+          <Reveal className="mt-5 grid gap-5 sm:grid-cols-3" amount={0.2}>
             {cs.metrics.map((m, i) => (
               <Item key={m.value + m.label}>
-                <div className="card noise p-6 sm:p-8">
-                  <div className="font-display text-[clamp(2.6rem,6vw,4.5rem)] font-extrabold tracking-[-0.04em]" style={{ color: i === 0 ? cs.accent : undefined }}>
-                    <Odometer value={m.value} delay={i * 0.12} />
-                  </div>
-                  <p className="mt-2 font-mono text-xs uppercase tracking-[0.18em] text-muted">{m.label}</p>
+                <div className="card p-6 sm:p-7">
+                  <div className="font-display text-[clamp(2.2rem,4.5vw,3.4rem)] font-medium tracking-tight" style={{ color: i === 0 ? cs.accent : undefined }}><Odometer value={m.value} delay={i * 0.12} /></div>
+                  <p className="mt-1 text-sm text-muted">{m.label}</p>
                 </div>
               </Item>
             ))}
@@ -68,14 +84,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
+      {/* problem / solution / process */}
       <section className="section">
         <div className="container-x">
-          <Reveal className="grid gap-4 md:grid-cols-3" amount={0.15}>
+          <Reveal className="grid gap-5 md:grid-cols-3" amount={0.15}>
             {blocks.map((b, i) => (
               <Item key={b.k} className="h-full">
                 <div className="card h-full p-7 sm:p-8">
-                  <span className="font-serif text-5xl italic" style={{ color: cs.accent }}>/0{i + 1}</span>
-                  <h2 className="mt-6 font-display text-2xl font-extrabold tracking-tight">{b.k}</h2>
+                  <span className="font-display text-4xl italic" style={{ color: cs.accent }}>0{i + 1}</span>
+                  <h2 className="mt-5 font-display text-2xl font-medium tracking-tight">{b.k}</h2>
                   <p className="mt-3 leading-relaxed text-muted">{b.v}</p>
                 </div>
               </Item>
@@ -84,51 +101,89 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
+      {/* technical details */}
       <section className="border-t border-line py-20 md:py-28">
-        <div className="container-x">
-          <Reveal>
-            <Item><p className="eyebrow">Results</p></Item>
-            <Item><h2 className="h-display mt-4 text-[clamp(2.2rem,6vw,4.5rem)]">{cs.headline}</h2></Item>
+        <div className="container-x grid gap-10 md:grid-cols-12">
+          <Reveal className="md:col-span-4">
+            <Item><p className="eyebrow">Technical details</p></Item>
+            <Item><h2 className="h-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)]">How it&apos;s <em>built.</em></h2></Item>
+            <Item><p className="mt-4 text-muted">What runs where, what it talks to, and what was handed over.</p></Item>
           </Reveal>
-          <Reveal className="mt-10 flex flex-wrap gap-3" amount={0.3}>
-            {cs.metrics.map((m) => (
-              <Item key={m.value + m.label}>
-                <div className="flex items-baseline gap-2 rounded-full border border-line bg-surface px-5 py-3">
-                  <span className="font-display text-2xl font-extrabold">{m.value}</span>
-                  <span className="text-muted">{m.label}</span>
-                </div>
-              </Item>
-            ))}
+          <Reveal className="md:col-span-8" amount={0.15}>
+            <Item>
+              <div className="card divide-y divide-line">
+                <Row k="Stack">{cs.tech.stack.map((s) => <Chip key={s}>{s}</Chip>)}</Row>
+                <Row k="Integrations">{cs.tech.integrations.map((s) => <Chip key={s}>{s}</Chip>)}</Row>
+                <Row k="Timeline"><span className="text-ink">{cs.tech.timeline}</span></Row>
+                <Row k="Team"><span className="text-ink">{cs.tech.team}</span></Row>
+                <Row k="Delivered">
+                  <ul className="space-y-1.5">{cs.tech.deliverables.map((d) => <li key={d} className="flex gap-2 text-ink"><span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-sage" />{d}</li>)}</ul>
+                </Row>
+              </div>
+            </Item>
           </Reveal>
+        </div>
+      </section>
 
-          {cs.testimonial && (
-            <Reveal className="mt-14" amount={0.3}>
-              <Item>
-                <figure className="card noise max-w-3xl p-8 sm:p-10">
-                  <span className="font-serif text-6xl leading-none" style={{ color: cs.accent }}>“</span>
-                  <blockquote className="mt-2 text-xl leading-relaxed sm:text-2xl">{cs.testimonial.quote}</blockquote>
+      {/* impact */}
+      <section className="border-t border-line py-20 md:py-28">
+        <div className="container-x grid gap-10 md:grid-cols-12 md:items-start">
+          <Reveal className="md:col-span-5">
+            <Item><p className="eyebrow">Impact</p></Item>
+            <Item><h2 className="h-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)]">{cs.headline}</h2></Item>
+            <Item>
+              <div className="mt-8 flex flex-wrap gap-3">
+                {cs.metrics.map((m) => (
+                  <div key={m.value + m.label} className="flex items-baseline gap-2 rounded-full border border-line bg-white px-5 py-3 shadow-soft">
+                    <span className="font-display text-2xl font-medium">{m.value}</span><span className="text-muted">{m.label}</span>
+                  </div>
+                ))}
+              </div>
+            </Item>
+          </Reveal>
+          <Reveal className="md:col-span-7" amount={0.3}>
+            <Item>
+              {cs.testimonial ? (
+                <figure className="card p-8 sm:p-10">
+                  <span className="font-display text-6xl leading-none" style={{ color: cs.accent }}>“</span>
+                  <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{cs.testimonial.quote}</blockquote>
                   <figcaption className="mt-6 text-muted"><span className="font-semibold text-ink">{cs.testimonial.name}</span> · {cs.testimonial.role}</figcaption>
                 </figure>
-              </Item>
-            </Reveal>
-          )}
+              ) : (
+                <div className="relative overflow-hidden rounded-[28px] shadow-soft">
+                  <Image src="/media/hills-wide.jpg" alt="" width={1200} height={720} sizes="(max-width: 768px) 100vw, 640px" className="aspect-[16/9] w-full object-cover" />
+                  <p className="absolute inset-x-5 bottom-5 rounded-2xl bg-white/75 p-4 font-display text-lg italic backdrop-blur-md">Numbers reported by the client after launch.</p>
+                </div>
+              )}
+            </Item>
+          </Reveal>
         </div>
       </section>
 
       <section className="border-t border-line py-20">
         <div className="container-x">
           <Reveal className="flex items-end justify-between">
-            <Item><h2 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">More builds</h2></Item>
+            <Item><h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">More builds</h2></Item>
             <Item><Link href="/case-studies" className="font-mono text-xs uppercase tracking-[0.18em] text-muted hover:text-ink">All →</Link></Item>
           </Reveal>
-          <Reveal className="mt-8 grid gap-4 md:grid-cols-2" amount={0.1}>
-            {others.map((o) => (
-              <Item key={o.slug} className="h-full"><CaseStudyCard cs={o} index={caseStudies.indexOf(o)} /></Item>
-            ))}
+          <Reveal className="mt-8 grid gap-5 md:grid-cols-2" amount={0.1}>
+            {others.map((o) => <Item key={o.slug} className="h-full"><CaseStudyCard cs={o} /></Item>)}
           </Reveal>
         </div>
       </section>
       <CTABand />
     </>
   );
+}
+
+function Row({ k, children }: { k: string; children: React.ReactNode }) {
+  return (
+    <div className="grid gap-2 p-6 sm:grid-cols-[140px_1fr] sm:gap-6 sm:p-7">
+      <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">{k}</span>
+      <div className="flex flex-wrap gap-2 text-[15px]">{children}</div>
+    </div>
+  );
+}
+function Chip({ children }: { children: React.ReactNode }) {
+  return <span className="rounded-full border border-line bg-bg px-3 py-1 text-sm text-ink">{children}</span>;
 }

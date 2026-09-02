@@ -5,35 +5,32 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#0B0B0D",
-        surface: "#141418",
-        surface2: "#1C1C22",
-        ink: "#F3EFE6",
-        muted: "#9B978F",
-        line: "rgba(255,255,255,0.09)",
-        pop: "#FF5A2D",
-        lime: "#D4FF4F",
+        bg: "#F5F5F0",
+        surface: "#FFFFFF",
+        surface2: "#ECEEE6",
+        ink: "#1F2416",
+        muted: "#6A7160",
+        line: "rgba(31,36,22,0.10)",
+        moss: "#2E3A1F",
+        leaf: "#5C7A3A",
+        sage: "#9DB27E",
+        sky: "#DFE7EC",
       },
       fontFamily: {
-        display: ["var(--font-syne)", "sans-serif"],
-        body: ["var(--font-dm)", "sans-serif"],
-        serif: ["var(--font-instrument)", "serif"],
+        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        body: ["var(--font-dm)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
       },
       keyframes: {
-        marquee: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        pulseSoft: {
-          "0%, 100%": { opacity: "0.35" },
-          "50%": { opacity: "0.7" },
-        },
+        marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },
       },
       animation: {
         marquee: "marquee var(--marquee-duration,30s) linear infinite",
         "marquee-reverse": "marquee var(--marquee-duration,30s) linear infinite reverse",
-        pulseSoft: "pulseSoft 6s ease-in-out infinite",
+      },
+      boxShadow: {
+        soft: "0 1px 2px rgba(31,36,22,.04), 0 12px 40px -12px rgba(31,36,22,.12)",
+        lift: "0 2px 4px rgba(31,36,22,.05), 0 24px 60px -16px rgba(31,36,22,.22)",
       },
     },
   },

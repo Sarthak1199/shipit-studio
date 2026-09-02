@@ -24,7 +24,7 @@ export default function Cursor() {
     };
     const over = (e: MouseEvent) => {
       hovering = !!(e.target as HTMLElement).closest("a,button,[data-cursor]");
-      ring.current!.style.borderColor = hovering ? "rgba(255,90,45,.9)" : "rgba(243,239,230,.55)";
+      ring.current!.style.borderColor = hovering ? "rgba(46,58,31,.9)" : "rgba(31,36,22,.45)";
     };
     const leave = () => { visible = false; dot.current!.style.opacity = "0"; ring.current!.style.opacity = "0"; };
     window.addEventListener("mousemove", move, { passive: true });
@@ -42,8 +42,8 @@ export default function Cursor() {
 
   return (
     <>
-      <div ref={dot} aria-hidden className="cursor-el pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-pop opacity-0 transition-opacity" />
-      <div ref={ring} aria-hidden className="cursor-el pointer-events-none fixed left-0 top-0 z-[100] h-9 w-9 rounded-full border border-ink/50 opacity-0 transition-[opacity,border-color] duration-300" />
+      <div ref={dot} aria-hidden className="cursor-el pointer-events-none fixed left-0 top-0 z-[100] h-2 w-2 rounded-full bg-moss opacity-0 transition-opacity" />
+      <div ref={ring} aria-hidden className="cursor-el pointer-events-none fixed left-0 top-0 z-[100] h-9 w-9 rounded-full border border-ink/40 opacity-0 transition-[opacity,border-color] duration-300" />
     </>
   );
 }

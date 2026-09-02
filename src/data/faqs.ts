@@ -1,46 +1,14 @@
 export type Faq = { q: string; a: string };
 
-// Only the first answer exists in the reference HTML. The rest were written to
-// match its tone and the studio's positioning — review before publishing.
 export const faqs: Faq[] = [
-  {
-    q: "What does it cost?",
-    a: "Fixed price per build, quoted after the scope call. No hourly billing, no retainer you forget to cancel. If the scope changes, we requote before we build.",
-  },
-  {
-    q: "We’ve tried AI before and it went nowhere. Why is this different?",
-    a: "Most AI projects die as demos because nobody owns the boring part: wiring it into how your team actually works. We start from one real headache, ship a working tool in weeks, train the people who use it, and stay on to iterate. Working software, not a slide deck.",
-  },
-  {
-    q: "We don’t know what to automate. Where do we start?",
-    a: "A 30-minute call. Tell us where your team loses time, what gets copy-pasted between tools, and which reports someone builds by hand every week. We come back within the week with a scoped plan and a prototype of the highest-leverage fix.",
-  },
-  {
-    q: "What will this take from our team?",
-    a: "One point of contact and a couple of hours across the build for access, feedback and a walkthrough. We do the building, testing and documentation. Your team’s job is to tell us what hurts and then use the thing.",
-  },
-  {
-    q: "Do we need a tech team?",
-    a: "No. Most of our clients don’t have one. We handle hosting, integrations and maintenance, and hand over clear documentation so anyone on your team can operate the tool day to day.",
-  },
-  {
-    q: "Does our data leave our environment?",
-    a: "Only where you say it can. We build inside your accounts and cloud wherever possible, use least-privilege access, and are explicit about which models or third-party services touch which data before anything goes live. If a workflow needs to stay fully in-house, we design for that.",
-  },
-  {
-    q: "Do you train our team?",
-    a: "Yes, every build ships with training. Live walkthroughs for the people who’ll use it, short recorded videos they can replay, and written SOPs. Training is part of the fixed price, not an add-on.",
-  },
-  {
-    q: "What if it breaks after handover?",
-    a: "We monitor what we ship and fix breakages caused by our build at no extra cost. When an upstream tool changes its API or your process changes, we tell you what it takes to adapt and requote only if the scope genuinely grows.",
-  },
-  {
-    q: "Can you work with our existing tools?",
-    a: "That’s the whole point. Google Workspace, Slack, WhatsApp, Notion, Zoho, Tally, your CRM, your POS, spreadsheets that shouldn’t exist. We connect what you already run rather than making you migrate.",
-  },
-  {
-    q: "What kinds of businesses do you work with?",
-    a: "Restaurants and F&B, D2C brands, healthcare, banks and manufacturers, from single-founder shops to enterprise teams. If you have a repeated manual process and a person who’s tired of doing it, we can help.",
-  },
+  { q: "What does it cost?", a: "Fixed price per build, quoted after the scope call. No hourly billing, no retainer you forget to cancel. If the scope changes, we requote before we build." },
+  { q: "We've tried AI before and it went nowhere. Why is this different?", a: "Most AI projects die because someone bought a platform and then looked for a problem. We start from your actual workflow and ship something you use in week one. If it's not useful, you find out in days, not after a quarter." },
+  { q: "We don't know what to automate. Where do we start?", a: "That's the scope call. Tell us what your team does manually every week. We'll tell you which one is worth fixing first, and which ones aren't worth paying us for." },
+  { q: "What will this take from our team?", a: "One 20-minute scope call, access to the tools we're connecting, and one person who answers questions during the build. That's it. You don't staff a project team." },
+  { q: "Do we need a tech team?", a: "No. We build it, connect it, and hand it over working. Your team needs to know how to use it, not maintain it." },
+  { q: "Does our data leave our environment?", a: "It stays in your systems wherever possible. We connect to what you already use instead of copying your data somewhere new. Where something has to move, we write down exactly what and where before we build." },
+  { q: "Do you train our team?", a: "Yes. Handover includes a walkthrough with the people who'll actually use it, plus a short doc they can refer back to. If a tool needs a training program, we built it wrong." },
+  { q: "What if it breaks after handover?", a: "We fix it. Builds come with a support window, and most clients stay on a light iteration plan because businesses change and tools should too." },
+  { q: "Can you work with our existing tools?", a: "Usually yes: Slack, Sheets, your POS, your CRM, your inbox. If something has no API, we'll say so on the scope call instead of discovering it three weeks in." },
+  { q: "What kinds of businesses do you work with?", a: "Restaurants, D2C, healthcare, pharma, finance. The industry matters less than whether the workflow is repetitive and currently done by hand." },
 ];

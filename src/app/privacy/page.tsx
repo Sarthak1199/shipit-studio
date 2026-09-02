@@ -10,7 +10,7 @@ export default function Privacy() {
       <div className="mt-8 max-w-2xl space-y-4 leading-relaxed text-muted">
         <p>ShipIt Studio collects only what you send us: your name, contact details and the description of the work you want done. We use it to reply to you and to scope your project, and we never sell it.</p>
         <p>Client data we touch during a build stays inside your own accounts and infrastructure wherever possible. Any third-party service that processes it is agreed with you in writing before it goes live.</p>
-        <p>Questions? Write to <a href={`mailto:${site.email}`} className="text-ink underline underline-offset-4">{site.email}</a>.</p>
+        <p>Questions? Write to <a href={`mailto:${site.email}`} className="text-leaf underline underline-offset-4">{site.email}</a>.</p>
       </div>
     </section>
   );
