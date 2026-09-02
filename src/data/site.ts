@@ -1,0 +1,24 @@
+export const site = {
+  name: "ShipIt Studio",
+  tagline: "An AI studio that designs, ships, monitors and trains enterprises.",
+  // TODO: replace with the real Calendly link
+  calendly: "https://calendly.com/shipitstudio/demo",
+  whatsapp:
+    "https://wa.me/919711994275?text=" +
+    encodeURIComponent("Hi, I'd like to know more about ShipIt Studio."),
+  instagram: "https://www.instagram.com/sarthak.simplifies.ai/",
+  instagramHandle: "sarthak.simplifies.ai",
+  phone: "+91 9711994275",
+  phoneHref: "tel:+919711994275",
+  email: "guptasarthak10@gmail.com",
+  location: "Gurugram, India",
+};
+
+export const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
+  { label: "Results", href: "/#results" },
+  { label: "Case studies", href: "/case-studies" },
+  { label: "Process", href: "/#process" },
+  { label: "FAQs", href: "/#faqs" },
+];
