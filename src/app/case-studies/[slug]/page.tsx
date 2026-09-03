@@ -7,7 +7,6 @@ import Odometer from "@/components/Odometer";
 import CTABand from "@/components/CTABand";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ToolChip from "@/components/ToolChip";
-import SectionCTA from "@/components/SectionCTA";
 import { Reveal, Item } from "@/components/Reveal";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
@@ -56,12 +55,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </Reveal>
 
           {/* metrics */}
-          <Reveal className="hide-scrollbar -mx-5 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:px-0" amount={0.2}>
+          <Reveal className={`mt-5 grid gap-2 sm:gap-5 ${cs.metrics.length === 2 ? "grid-cols-2" : "grid-cols-3"}`} amount={0.2}>
             {cs.metrics.map((m, i) => (
-              <Item key={m.value + m.label} className="w-[62vw] shrink-0 snap-center sm:w-auto">
-                <div className="card p-5 sm:p-7">
-                  <div className="font-display text-[clamp(2.2rem,4.5vw,3.4rem)] font-medium tracking-tight" style={{ color: i === 0 ? cs.accent : undefined }}><Odometer value={m.value} delay={i * 0.12} /></div>
-                  <p className="mt-1 text-sm text-muted">{m.label}</p>
+              <Item key={m.value + m.label} className="min-w-0">
+                <div className="card h-full p-3 sm:p-7">
+                  <div className="font-display text-[clamp(1.35rem,5.5vw,3.4rem)] font-medium leading-none tracking-tight" style={{ color: i === 0 ? cs.accent : undefined }}><Odometer value={m.value} delay={i * 0.12} /></div>
+                  <p className="mt-1.5 text-[11px] leading-snug text-muted sm:text-sm">{m.label}</p>
                 </div>
               </Item>
             ))}
@@ -83,7 +82,6 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </Item>
             ))}
           </Reveal>
-          <SectionCTA className="mt-10" label="Have a similar headache?" />
         </div>
       </section>
 

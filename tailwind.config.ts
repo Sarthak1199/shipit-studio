@@ -20,6 +20,7 @@ const config: Config = {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
         body: ["var(--font-dm)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        brand: ["var(--font-manrope)", "system-ui", "sans-serif"],
       },
       keyframes: {
         marquee: { "0%": { transform: "translateX(0)" }, "100%": { transform: "translateX(-50%)" } },

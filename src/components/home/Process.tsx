@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import { Reveal, Item } from "@/components/Reveal";
-import SectionCTA from "@/components/SectionCTA";
 
 const steps = [
   { n: "01", title: "Tell us the headaches", desc: "30-min call, no fluff. We get back with a detailed scope and a prototype within the week.", tag: "Week 0" },
@@ -35,7 +34,6 @@ export default function Process() {
             </motion.div>
           ))}
         </div>
-        <SectionCTA className="mt-12" label="Start at step one." />
       </div>
     </section>
   );

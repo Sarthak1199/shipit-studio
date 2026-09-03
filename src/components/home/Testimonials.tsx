@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Reveal, Item } from "@/components/Reveal";
-import SectionCTA from "@/components/SectionCTA";
 
 const items = [
   { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder, Lexi's" },
@@ -45,7 +44,6 @@ export default function Testimonials() {
           <div aria-hidden className="flex w-[40vw] shrink-0 items-center justify-center rounded-[28px] border border-dashed border-line font-mono text-[11px] uppercase tracking-[0.18em] text-muted sm:w-[280px]">More soon</div>
         </motion.div>
       </div>
-      <div className="container-x"><SectionCTA className="mt-10" label="Want a quote like this?" /></div>
     </section>
   );
 }

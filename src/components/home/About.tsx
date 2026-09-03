@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { site } from "@/data/site";
 import { Reveal, Item } from "@/components/Reveal";
-import SectionCTA from "@/components/SectionCTA";
 
 export default function About() {
   return (
@@ -39,7 +38,6 @@ export default function About() {
                 </a>
               </div>
             </Item>
-            <Item><SectionCTA className="mt-8 sm:justify-start" label="Talk to me directly." /></Item>
           </Reveal>
         </div>
       </div>

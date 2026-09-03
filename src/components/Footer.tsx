@@ -8,7 +8,7 @@ import EggStamp from "@/components/EggStamp";
 import { cn } from "@/lib/cn";
 
 const groups = [
-  { k: "Explore", items: [{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: "Case studies", href: "/case-studies" }, { label: "Process", href: "/#process" }, { label: "Pricing", href: "/#pricing" }, { label: "FAQs", href: "/#faqs" }] },
+  { k: "Explore", items: [{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: "Case studies", href: "/case-studies" }, { label: "Process", href: "/#process" }, { label: "FAQs", href: "/#faqs" }] },
   { k: "Utility", items: [{ label: "Privacy", href: "/privacy" }, { label: "Contact", href: "/contact" }] },
 ];
 
@@ -24,8 +24,9 @@ export default function Footer() {
         {/* brand row */}
         <div className="flex items-start justify-between gap-4 md:hidden">
           <div>
-            <Link href="/" className="font-display text-xl font-medium tracking-tight">ShipIt Studio</Link>
-            <p className="mt-1 max-w-[260px] font-display text-sm italic text-ink/75">{site.tagline}</p>
+            <div className="mb-3"><EggStamp /></div>
+            <Link href="/" className="font-brand text-xl font-bold tracking-tight">ShipIt Studio</Link>
+            <p className="mt-1 max-w-[260px] font-brand text-sm text-ink/75">{site.tagline}</p>
           </div>
           <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-white/70 text-ink">
             <InstaIcon />
@@ -39,14 +40,14 @@ export default function Footer() {
             return (
               <div key={g.k}>
                 <button type="button" onClick={() => setOpen(isOpen ? null : g.k)} aria-expanded={isOpen} className="flex min-h-[44px] w-full items-center justify-between py-2 text-left">
-                  <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-ink/70">{g.k}</span>
+                  <span className="font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">{g.k}</span>
                   <span className={cn("text-ink/60 transition-transform", isOpen && "rotate-45")}>+</span>
                 </button>
                 <AnimatePresence initial={false}>
                   {isOpen && (
                     <motion.ul initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }} className="overflow-hidden">
                       <div className="flex flex-wrap gap-x-5 gap-y-1 pb-3">
-                        {g.items.map((l) => <li key={l.href}><Link href={l.href} className="inline-flex min-h-[36px] items-center text-[15px] text-ink/80">{l.label}</Link></li>)}
+                        {g.items.map((l) => <li key={l.href}><Link href={l.href} className="inline-flex min-h-[36px] items-center font-brand text-[15px] text-ink/80">{l.label}</Link></li>)}
                       </div>
                     </motion.ul>
                   )}
@@ -64,31 +65,32 @@ export default function Footer() {
         {/* desktop columns */}
         <div className="hidden gap-12 md:grid md:grid-cols-12">
           <div className="md:col-span-5">
-            <Link href="/" className="font-display text-2xl font-medium tracking-tight">ShipIt Studio</Link>
-            <p className="mt-4 max-w-sm font-display text-lg italic text-ink/80">{site.tagline}</p>
-            <p className="eyebrow mt-8">Follow us</p>
+            <div className="mb-4"><EggStamp /></div>
+            <Link href="/" className="font-brand text-2xl font-bold tracking-tight">ShipIt Studio</Link>
+            <p className="mt-4 max-w-sm font-brand text-base text-ink/80">{site.tagline}</p>
+            <p className="mt-8 font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">Follow us</p>
             <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-[44px] items-center gap-2 text-ink hover:text-leaf"><InstaIcon />@{site.instagramHandle}</a>
           </div>
           {groups.map((g) => (
             <div key={g.k} className="md:col-span-2">
-              <p className="eyebrow">{g.k}</p>
-              <ul className="mt-4 space-y-1">{g.items.map((l) => <li key={l.href}><Link href={l.href} className="inline-flex min-h-[40px] items-center text-ink/75 hover:text-ink">{l.label}</Link></li>)}</ul>
+              <p className="font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">{g.k}</p>
+              <ul className="mt-4 space-y-1">{g.items.map((l) => <li key={l.href}><Link href={l.href} className="inline-flex min-h-[40px] items-center font-brand text-ink/75 hover:text-ink">{l.label}</Link></li>)}</ul>
             </div>
           ))}
           <div className="md:col-span-3">
-            <p className="eyebrow">Contact</p>
+            <p className="font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">Contact</p>
             <ul className="mt-4 space-y-1">
               <li><a href={site.phoneHref} className="inline-flex min-h-[40px] items-center text-ink/75 hover:text-ink">{site.phone}</a></li>
               <li><a href={`mailto:${site.email}`} className="inline-flex min-h-[40px] items-center break-all text-ink/75 hover:text-ink">{site.email}</a></li>
             </ul>
-            <p className="eyebrow mt-8">Location</p>
+            <p className="mt-8 font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">Location</p>
             <p className="mt-3 text-ink/75">{site.location}</p>
           </div>
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink/70 md:mt-10 md:text-[11px]">
+        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-ink/10 pt-5 font-brand text-[10px] font-semibold uppercase tracking-[0.18em] text-ink/70 md:mt-10 md:text-[11px]">
           <span>© 2026 ShipIt Studio · All rights reserved</span>
-          <EggStamp />
+          <span>Gurugram, India</span>
         </div>
       </div>
 

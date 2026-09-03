@@ -1,7 +1,7 @@
 export const site = {
   name: "ShipIt Studio",
   tagline: "We design, deploy, and manage AI systems for enterprises.",
-  calendly: "https://calendly.com/guptasarthak10/new-meeting",
+  calendly: "https://calendly.com/guptasarthak10-33sd/30min",
   whatsapp:
     "https://wa.me/919711994275?text=" +
     encodeURIComponent("Hi, I'd like to know more about ShipIt Studio."),
@@ -13,19 +13,13 @@ export const site = {
   location: "Gurugram, India",
     linkedin: "https://www.linkedin.com/in/sarthak-gupta-tech-and-product/",
     founderPhoto: "/media/founder.jpg",
-  pricing: [
-    { name: "AI agents & automations", from: "₹70,000" },
-    { name: "Internal platforms & webapps", from: "₹2,00,000" },
-    { name: "Enterprise AI systems", from: "₹7,00,000" },
-  ],
   easterEgg: "This entire website — backend and frontend — was built with Claude Fable 5.1 in under 3 hours.",
 };
 
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
-  { label: "Results", href: "/#results" },
-  { label: "Case studies", href: "/case-studies" },
+    { label: "Case studies", href: "/case-studies" },
   { label: "Process", href: "/#process" },
   { label: "FAQs", href: "/#faqs" },
 ];

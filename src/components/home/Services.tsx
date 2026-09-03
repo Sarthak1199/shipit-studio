@@ -1,7 +1,6 @@
 import LazyVideo from "@/components/LazyVideo";
 import TiltCard from "@/components/TiltCard";
 import { Reveal, Item } from "@/components/Reveal";
-import SectionCTA from "@/components/SectionCTA";
 
 const services = [
   { n: "01", title: "Internal Tools & Dashboards", desc: "The dashboard your team asked for. Built around your data, your workflow, your bottlenecks.", video: "/media/internal-tool.mp4", tags: ["Live data", "Ops platforms"] },
@@ -36,7 +35,6 @@ export default function Services() {
             </Item>
           ))}
         </Reveal>
-        <SectionCTA className="mt-10" label="Which one is yours?" />
       </div>
     </section>
   );
