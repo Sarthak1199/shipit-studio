@@ -1,5 +1,4 @@
 export type Metric = { value: string; label: string };
-export type Media = { type: "logo"; src: string; bg: string } | { type: "video"; src: string };
 export type Tech = { stack: string[]; integrations: string[]; timeline: string; team: string; deliverables: string[] };
 export type CaseStudy = {
   slug: string;
@@ -8,8 +7,10 @@ export type CaseStudy = {
   headline: string;
   summary: string;
   metrics: Metric[];
-  media: Media;
-  video: string;
+  build: string;
+  industryShort: string;
+  cover: string;
+  gallery: string[];
   logo?: string;
   accent: string;
   problem: string;
@@ -29,8 +30,10 @@ export const caseStudies: CaseStudy[] = [
     headline: "From paper invoices to one flow.",
     summary: "Paper invoices, GRNs and POs reconciled by hand. We built one flow to automate it all.",
     metrics: [{ value: "80%", label: "reduced errors" }, { value: "10 hrs", label: "/month saved" }, { value: "₹1.5L", label: "/month saved" }],
-    media: { type: "logo", src: "/logos/lexis.jpg", bg: "#1F55D6" },
-    video: "/media/internal-tool.mp4",
+    build: "#Build01",
+    industryShort: "F&B",
+    cover: "/media/cases/lexis-1.jpg",
+    gallery: ["/media/cases/lexis-1.jpg"],
     logo: "/logos/lexis.jpg",
     accent: "#1F55D6",
     problem: "Every week, Lexi's reconciled stock by hand: supplier invoices, goods receipt notes and purchase orders lived on paper and in three different spreadsheets. Numbers rarely matched, and the founders spent Sundays chasing the gaps instead of running the shop.",
@@ -52,8 +55,10 @@ export const caseStudies: CaseStudy[] = [
     headline: "One live brain for a scattered CRM.",
     summary: "An internal platform with analytics dashboards, automated vendor onboarding and auto-generated templates.",
     metrics: [{ value: "120 hrs", label: "/month saved" }, { value: "₹6L", label: "sales recovered" }],
-    media: { type: "logo", src: "/logos/dotpe.jpg", bg: "#FFFFFF" },
-    video: "/media/automate.mp4",
+    build: "#Build02",
+    industryShort: "Fintech",
+    cover: "/media/cases/dotpe-1.jpg",
+    gallery: ["/media/cases/dotpe-1.jpg"],
     logo: "/logos/dotpe.jpg",
     accent: "#E63A2E",
     problem: "CRM data, vendor onboarding and campaign templates were spread across sheets, tickets and chat threads. The team spent hours every week pulling numbers by hand and still missed follow-ups that were quietly costing revenue.",
@@ -75,9 +80,11 @@ export const caseStudies: CaseStudy[] = [
     headline: "Diaries out. A structured database in.",
     summary: "Replaced a manual partner-tracking diaries with a structured database. Fewer errors, zero manual hassle.",
     metrics: [{ value: "8 hrs", label: "/week saved" }, { value: "40%", label: "more callbacks" }, { value: "Zero", label: "hassle" }],
-    media: { type: "video", src: "/media/internal-tool.mp4" },
-    video: "/media/internal-tool.mp4",
-    accent: "#5C7A3A",
+    build: "#Build03",
+    industryShort: "Matrimony",
+    cover: "/media/cases/rishta-1.jpg",
+    gallery: ["/media/cases/rishta-1.jpg", "/media/cases/rishta-2.jpg"],
+    accent: "#C2185B",
     problem: "Partner profiles, preferences and follow-ups were tracked in physical diaries and memory. Matches were missed, callbacks slipped, and onboarding a new team member meant weeks of reading someone else's handwriting.",
     solution: "We replaced the diaries with a structured database and a simple interface for the team: searchable profiles, preference matching, automatic reminders for callbacks and a daily list of who to reach out to next.",
     process: "We digitised the existing diaries first so nothing was lost, then built the matching and reminder layer on top. The team was trained in two sessions and were running the platform on their own within the fortnight.",
@@ -96,8 +103,10 @@ export const caseStudies: CaseStudy[] = [
     headline: "Competitor pricing, every morning, by pin code.",
     summary: "AI agents that track competitor pricing and availability by pin code, delivered as a daily email report.",
     metrics: [{ value: "₹2L", label: "additional revenue" }, { value: "35%", label: "higher availability" }, { value: "Daily", label: "tracking" }],
-    media: { type: "video", src: "/media/automate.mp4" },
-    video: "/media/automate.mp4",
+    build: "#Build04",
+    industryShort: "Quick commerce",
+    cover: "/media/cases/blinkit-1.jpg",
+    gallery: ["/media/cases/blinkit-1.jpg", "/media/cases/blinkit-2.jpg"],
     accent: "#2E3A1F",
     problem: "A quick-commerce brand had no reliable view of how competitors priced and stocked the same SKUs across pin codes. Pricing decisions were made on gut feel and stale screenshots, and stockouts went unnoticed for days.",
     solution: "We deployed AI agents that check competitor apps for price and availability by pin code every day, normalise the results, and deliver a clean email report each morning with alerts on price moves and gaps.",

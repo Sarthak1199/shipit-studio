@@ -20,7 +20,7 @@ export default function CTABand() {
         <p className="max-w-md text-bg/85">Pick a time, or just message. Either way you talk to the person building your tool.</p>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
           <Magnetic><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-cream h-[52px] w-full px-8 sm:w-auto">Book a call</a></Magnetic>
-          <Magnetic><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn h-[52px] w-full border border-bg/40 px-8 text-bg hover:bg-bg/10 sm:w-auto">Chat on WhatsApp</a></Magnetic>
+          <Magnetic><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn h-[52px] w-full border border-bg/40 px-8 text-bg hover:bg-bg/10 sm:w-auto">WhatsApp</a></Magnetic>
         </div>
       </div>
     </section>

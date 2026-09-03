@@ -7,6 +7,8 @@ import { navLinks, site } from "@/data/site";
 import { getLenis, scrollToTarget } from "@/lib/lenis";
 import { cn } from "@/lib/cn";
 import Magnetic from "./Magnetic";
+import Image from "next/image";
+import { useRef } from "react";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -30,6 +32,17 @@ export default function Nav() {
   }, [open]);
   useEffect(() => { setOpen(false); }, [pathname]);
 
+  const clicks = useRef<number[]>([]);
+  const onLogo = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const now = Date.now();
+    clicks.current = [...clicks.current.filter((t) => now - t < 3000), now];
+    if (clicks.current.length >= 5) {
+      clicks.current = [];
+      window.dispatchEvent(new Event("shipit:egg"));
+    }
+    onNav(e, "/");
+  };
+
   const onNav = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     if (href.startsWith("/#") && pathname === "/") {
       e.preventDefault(); setOpen(false);
@@ -48,8 +61,8 @@ export default function Nav() {
         className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
       >
         <div className="mx-auto flex max-w-[1240px] items-center justify-between">
-          <Link href="/" onClick={(e) => onNav(e, "/")} className="font-display text-[22px] font-medium tracking-tight text-ink">
-            ShipIt Studio
+          <Link href="/" onClick={onLogo} aria-label="ShipIt Studio home" title="ShipIt Studio" className="flex h-11 items-center">
+            <Image src="/media/logo.png" alt="ShipIt Studio" width={2172} height={400} priority className="h-8 w-auto sm:h-9" />
           </Link>
 
           <div className={cn("hidden items-center gap-1 rounded-full border p-1.5 transition-all duration-500 lg:flex", scrolled ? "glass border-line shadow-soft" : "border-transparent bg-white/50", compact && "scale-[0.96]")}>
@@ -61,8 +74,8 @@ export default function Nav() {
                 </Link>
               ))}
             </nav>
-            <Magnetic strength={0.2}><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-10 px-4 text-[14px]">Chat on WhatsApp</a></Magnetic>
-            <Magnetic strength={0.2}><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-10 px-4 text-[14px]">Book a demo</a></Magnetic>
+            <Magnetic strength={0.2}><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-10 px-4 text-[14px]">WhatsApp</a></Magnetic>
+            <Magnetic strength={0.2}><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-10 px-4 text-[14px]">Book a call</a></Magnetic>
           </div>
 
           <button type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen((o) => !o)}
@@ -86,8 +99,8 @@ export default function Nav() {
             className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-10 pt-24 lg:hidden">
             <motion.div initial="hidden" animate="show" exit="hidden" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.2 } } }} className="flex h-full flex-col">
               <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex flex-col gap-3">
-                <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-14 text-base">Book a demo</a>
-                <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-14 text-base">Chat on WhatsApp</a>
+                <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-14 text-base">Book a call</a>
+                <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-14 text-base">WhatsApp</a>
               </motion.div>
               <nav className="mt-8 flex flex-col" aria-label="Mobile">
                 {navLinks.map((l, i) => (

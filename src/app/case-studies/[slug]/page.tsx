@@ -5,8 +5,7 @@ import { notFound } from "next/navigation";
 import { caseStudies, getCaseStudy } from "@/data/case-studies";
 import Odometer from "@/components/Odometer";
 import CTABand from "@/components/CTABand";
-import LazyVideo from "@/components/LazyVideo";
-import CaseStudyCard, { CaseMedia } from "@/components/CaseStudyCard";
+import CaseStudyCard from "@/components/CaseStudyCard";
 import { Reveal, Item } from "@/components/Reveal";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
@@ -36,7 +35,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <Item>
               <div className="flex items-center gap-3">
                 {cs.logo && <Image src={cs.logo} alt="" width={40} height={40} className="h-10 w-10 rounded-xl object-cover" />}
-                <p className="eyebrow">{cs.industry}</p>
+                <p className="eyebrow">{cs.build} · {cs.industry}</p>
               </div>
             </Item>
             <Item><h1 className="h-display mt-5 max-w-4xl text-[clamp(2.4rem,6vw,4.8rem)]">{cs.client}</h1></Item>
@@ -44,30 +43,21 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </Reveal>
 
           {/* media */}
-          <Reveal className="mt-12 grid gap-5 md:grid-cols-3" amount={0.2}>
-            <Item className="md:col-span-2">
-              <div className="group relative aspect-[16/10] overflow-hidden rounded-[28px] bg-surface2 shadow-soft">
-                <LazyVideo src={cs.video} className="absolute inset-0 h-full w-full object-cover" />
-                <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2">
-                  {cs.metrics.map((m) => (
-                    <span key={m.value + m.label} className="rounded-full bg-ink/75 px-3 py-1.5 text-xs text-white backdrop-blur-md"><b className="font-semibold">{m.value}</b> {m.label}</span>
-                  ))}
+          <Reveal className={`mt-12 grid gap-5 ${cs.gallery.length > 1 ? "md:grid-cols-2" : ""}`} amount={0.2}>
+            {cs.gallery.map((src, i) => (
+              <Item key={src}>
+                <div className="group relative aspect-[16/10] overflow-hidden rounded-[28px] bg-surface2 shadow-soft">
+                  <Image src={src} alt={`${cs.client} — screen ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 600px" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" />
+                  {i === 0 && (
+                    <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2">
+                      {cs.metrics.map((m) => (
+                        <span key={m.value + m.label} className="rounded-full bg-ink/75 px-3 py-1.5 text-xs text-white backdrop-blur-md"><b className="font-semibold">{m.value}</b> {m.label}</span>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            </Item>
-            <Item className="h-full">
-              {cs.media.type === "logo" ? (
-                <div className="group h-full min-h-[240px]"><CaseMedia cs={cs} className="h-full min-h-[240px] rounded-[28px] shadow-soft" /></div>
-              ) : (
-                <div className="relative h-full min-h-[240px] overflow-hidden rounded-[28px] shadow-soft">
-                  <Image src="/media/hill-sky.jpg" alt="" fill sizes="(max-width: 768px) 100vw, 400px" className="object-cover" />
-                  <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/30 bg-white/70 p-4 backdrop-blur-md">
-                    <p className="eyebrow">{cs.industry}</p>
-                    <p className="mt-1 font-display text-lg italic">{cs.headline}</p>
-                  </div>
-                </div>
-              )}
-            </Item>
+              </Item>
+            ))}
           </Reveal>
 
           {/* metrics */}

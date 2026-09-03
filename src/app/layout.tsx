@@ -7,6 +7,7 @@ import Cursor from "@/components/Cursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import EasterEgg from "@/components/EasterEgg";
 import { site } from "@/data/site";
 
 const fraunces = Fraunces({ subsets: ["latin"], weight: "variable", style: ["normal", "italic"], axes: ["opsz", "SOFT"], variable: "--font-fraunces", display: "swap" });
@@ -31,6 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           <main className="relative">{children}</main>
           <Footer />
+          <EasterEgg />
         </Providers>
       </body>
     </html>

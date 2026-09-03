@@ -11,6 +11,11 @@ export const site = {
   phoneHref: "tel:+919711994275",
   email: "guptasarthak10@gmail.com",
   location: "Gurugram, India",
+  // Drop in the real profile URL
+  linkedin: "https://www.linkedin.com/in/sarthak-gupta-pm/",
+  // Set to "/media/founder.jpg" once the photo is in public/media
+  founderPhoto: "",
+  easterEgg: "This entire website — backend and frontend — was built with Claude Fable 5.1 in under 3 hours.",
 };
 
 export const navLinks = [

@@ -1,11 +1,11 @@
 import HeroMac from "@/components/home/HeroMac";
 import Services from "@/components/home/Services";
 import Results from "@/components/home/Results";
-import ThinkingMarquee from "@/components/home/ThinkingMarquee";
+import Quote from "@/components/home/Quote";
 import CaseStudies from "@/components/home/CaseStudies";
+import Testimonials from "@/components/home/Testimonials";
 import Process from "@/components/home/Process";
 import Reels from "@/components/home/Reels";
-import Testimonials from "@/components/home/Testimonials";
 import About from "@/components/home/About";
 import FAQ from "@/components/home/FAQ";
 import CTABand from "@/components/CTABand";
@@ -16,11 +16,11 @@ export default function Home() {
       <HeroMac />
       <Services />
       <Results />
-      <ThinkingMarquee />
+      <Quote />
       <CaseStudies />
+      <Testimonials />
       <Process />
       <Reels />
-      <Testimonials />
       <About />
       <FAQ />
       <CTABand />
