@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { faqs } from "@/data/faqs";
 import { Reveal, Item } from "@/components/Reveal";
+import SectionCTA from "@/components/SectionCTA";
 import { cn } from "@/lib/cn";
 
 export default function FAQ() {
@@ -42,6 +43,7 @@ export default function FAQ() {
               })}
             </ul>
           </Item>
+          <Item><SectionCTA className="mt-8 sm:justify-start" label="Still have a question?" /></Item>
         </Reveal>
       </div>
     </section>

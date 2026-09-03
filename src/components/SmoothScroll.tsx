@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { setLenis, scrollToTarget } from "@/lib/lenis";
+import { setLenis, getLenis, scrollToTarget } from "@/lib/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,6 +33,7 @@ export default function SmoothScroll() {
       const t = setTimeout(() => scrollToTarget(hash), 500);
       return () => clearTimeout(t);
     }
+    getLenis()?.scrollTo(0, { immediate: true, force: true });
     window.scrollTo(0, 0);
     const t = setTimeout(() => ScrollTrigger.refresh(), 700);
     return () => clearTimeout(t);

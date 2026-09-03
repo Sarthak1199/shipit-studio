@@ -1,5 +1,5 @@
 export type Metric = { value: string; label: string };
-export type Tech = { stack: string[]; integrations: string[]; timeline: string; team: string; deliverables: string[] };
+export type Tech = { stack: string[]; integrations: string[]; deliverables: string[] };
 export type CaseStudy = {
   slug: string;
   client: string;
@@ -21,15 +21,14 @@ export type CaseStudy = {
   testimonial?: { quote: string; name: string; role: string };
 };
 
-// Metrics, summaries and testimonials are verbatim from the reference site.
-// problem / solution / process paragraphs and the technical details are extrapolated — review before publishing.
+// Content from ~/Documents/case studies/*.md (Sarthak, 2026-09-03).
 export const caseStudies: CaseStudy[] = [
   {
     slug: "lexis-sandwich-shop",
-    client: "Lexi's sandwich shop",
+    client: "Lexie Ops Tool",
     industry: "F&B · Internal tools",
-    headline: "From paper invoices to one flow.",
-    summary: "Paper invoices, GRNs and POs reconciled by hand. We built one flow to automate it all.",
+    headline: "Invoices out of WhatsApp. A structured system in.",
+    summary: "Replaced manual invoice reconciliation with a structured GRN and PO system. Fewer errors, zero manual hassle.",
     metrics: [{ value: "80%", label: "reduced errors" }, { value: "10 hrs", label: "/month saved" }, { value: "₹1.5L", label: "/month saved" }],
     build: "#Build01",
     industryShort: "F&B",
@@ -37,25 +36,32 @@ export const caseStudies: CaseStudy[] = [
     gallery: ["/media/cases/lexis-1.jpg"],
     logo: "/logos/lexis.jpg",
     accent: "#1F55D6",
-    problem: "Every week, Lexi's reconciled stock by hand: supplier invoices, goods receipt notes and purchase orders lived on paper and in three different spreadsheets. Numbers rarely matched, and the founders spent Sundays chasing the gaps instead of running the shop.",
-    solution: "We built a single inwarding flow. Invoices are captured on the phone, line items are read automatically, matched to open POs and turned into GRNs in one tap. Stock levels, spend per supplier and mismatches update live on one dashboard.",
-    process: "One scope call, a working prototype in the first week, then two weeks of building against real invoices from the kitchen. We trained the team on-site and iterated on edge cases for a month after launch.",
+    problem: "Lexie's tracked purchase orders and goods receipts manually — invoices photographed on WhatsApp, reconciled by hand once a week. No single source of truth for what was ordered vs. what arrived, no price-variance visibility, payables reconstructed manually.",
+    solution: "We built a web app to create POs (manual or CSV) and send them to vendors over WhatsApp. On arrival, staff photograph the invoice — Claude Vision OCR extracts line items, staff review/edit, and the system matches it to the original PO (exact → fuzzy → manual), flagging off-PO items separately. A GRN-first dashboard shows items received, price trends, and payables.",
+    process: "Started with PO creation and WhatsApp send, then added OCR-based GRN capture once the PO flow was trusted. The dashboard was reworked mid-build — the original PO-vs-GRN KPI cards compared against the wrong baseline, so it was rebuilt GRN-first. Branch management (multi-branch, reassign-or-purge on delete) was added last.",
     tech: {
-      stack: ["Next.js", "Supabase (Postgres)", "OpenAI vision for invoice OCR", "Vercel"],
-      integrations: ["Google Sheets (legacy stock)", "WhatsApp (invoice capture)", "Supplier PO exports"],
-      timeline: "3 weeks to launch, 4 weeks of iteration",
-      team: "1 builder, 1 point of contact at Lexi's",
-      deliverables: ["Mobile inwarding flow", "PO ↔ GRN matching", "Live stock and supplier dashboard", "SOP doc + on-site training"],
+      stack: ["TypeScript", "React 19", "Vite", "Tailwind CSS", "Node.js", "Express 5", "PostgreSQL (Neon)", "Vercel Blob", "Claude Vision OCR"],
+      integrations: ["WhatsApp (wa.me) for PO delivery", "Claude Vision API for OCR"],
+      deliverables: [
+        "PO creation (manual + CSV) with fuzzy item matching",
+        "WhatsApp PO delivery to vendors",
+        "Photo-based GRN capture with Claude Vision OCR",
+        "PO-to-GRN matching, off-PO items tracked separately",
+        "GRN-first dashboard: items received, price trend, payables",
+        "Multi-branch support with safe branch deletion",
+      ],
     },
-    // drop a diagram at /public/media/cases/lexis-sandwich-shop-architecture.png and set `image` to show it
-    architecture: { text: "Invoices come in over WhatsApp, get read by a vision model, are matched to open POs in Postgres and surface on a Next.js dashboard." },
+    architecture: {
+      text: "GRN photo → stored in Vercel Blob → Claude Vision OCR extracts line items → human review/edit → matched to PO (exact/fuzzy/manual) → stored in Postgres → GRN-first dashboard.",
+      image: "/media/cases/lexis-sandwich-shop-architecture.svg",
+    },
     testimonial: { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder Lexi's" },
   },
   {
     slug: "dotpe-crm-internal-brain",
     client: "DotPe CRM internal brain",
     industry: "Fintech · Internal platform",
-    headline: "One live brain for a scattered CRM.",
+    headline: "Screenshots out. A synced merchant profile in.",
     summary: "An internal platform with analytics dashboards, automated vendor onboarding and auto-generated templates.",
     metrics: [{ value: "120 hrs", label: "/month saved" }, { value: "₹6L", label: "sales recovered" }],
     build: "#Build02",
@@ -64,24 +70,30 @@ export const caseStudies: CaseStudy[] = [
     gallery: ["/media/cases/dotpe-1.jpg"],
     logo: "/logos/dotpe.jpg",
     accent: "#E63A2E",
-    problem: "CRM data, vendor onboarding and campaign templates were spread across sheets, tickets and chat threads. The team spent hours every week pulling numbers by hand and still missed follow-ups that were quietly costing revenue.",
-    solution: "We built an internal platform that sits on top of the CRM: live analytics dashboards for the sales and ops leads, an automated vendor onboarding pipeline, and AI-generated message templates that adapt to each merchant segment.",
-    process: "We shadowed the CRM team for a week to map the real workflow, shipped the dashboard first so the wins were visible early, then layered onboarding automation and templates in weekly releases with training at each step.",
+    problem: "CRM sales, onboarding, and adoption data for merchants lived across scattered Redash queries and manually-updated Google Sheets. There was no single merchant profile — sales, ops, and leadership each pieced together their own view, and weekly reporting meant screenshotting dashboards into emails that often broke on size limits.",
+    solution: "We built a merchant-centric dashboard and database: Redash queries and the CRM/Loyalty closures Google Sheet sync in automatically via cron, landing in a generic time-series snapshot table per merchant. Sales, ops, and leadership (read-only) all see the same account-level view, with a hand-built HTML email report sent out automatically instead of screenshots.",
+    process: "Started with the data model — one merchant record, with a generic snapshot table so any new Redash or Sheets metric could be added without a schema change. Sync jobs were split into single-purpose cron routes after Vercel's function execution ceiling forced slow Redash syncs apart. The email report was rebuilt from scratch after discovering Gmail clips HTML over ~102KB, ruling out screenshot-based reporting.",
     tech: {
-      stack: ["Next.js", "BigQuery + scheduled views", "Claude for template generation", "Cloud Run workers"],
-      integrations: ["CRM API", "Slack alerts", "Google Sheets exports", "WhatsApp Business templates"],
-      timeline: "6 weeks in three weekly releases",
-      team: "1 builder, CRM lead + 2 ops analysts as reviewers",
-      deliverables: ["Sales and ops analytics dashboards", "Vendor onboarding pipeline", "Segment-aware template generator", "Runbooks + recorded training"],
+      stack: ["Next.js 16 (App Router)", "TypeScript", "React 19", "PostgreSQL via Prisma", "Supabase", "Auth.js (JWT, role-based)", "Tailwind CSS", "shadcn/ui + Radix", "Recharts", "Resend", "Vercel (serverless + cron)"],
+      integrations: ["Redash — CRM activation, credit consumption, customer reach, MX-grain metrics", "Google Sheets — CRM/Loyalty closures, payments, branch counts, rates", "Resend — automated HTML email reports"],
+      deliverables: [
+        "Merchant-centric dashboard + database view",
+        "Automated Redash + Google Sheets sync with run tracking",
+        "Role-based access (sales/ops write, leadership read-only)",
+        "Onboarding, roadmap, and support-request tracking",
+        "Automated weekly HTML email report (inline SVG charts, no screenshots)",
+      ],
     },
-    // drop a diagram at /public/media/cases/dotpe-crm-internal-brain-architecture.png and set `image` to show it
-    architecture: { text: "Scheduled BigQuery views feed a Next.js dashboard; Cloud Run workers run onboarding and template generation and push alerts to Slack." },
+    architecture: {
+      text: "Redash queries and the closures Google Sheet sync into Postgres via scheduled cron jobs, landing in a generic per-merchant snapshot table. Server Components read this via Prisma; a pure computation layer handles funnel/KPI/ARPU math separately from data fetching. A weekly cron renders a dependency-free HTML email report and sends it via Resend.",
+      image: "/media/cases/dotpe-crm-internal-brain-architecture.svg",
+    },
     testimonial: { quote: "They turned our scattered CRM data and ops work into one live dashboard. Recovered 40% revenue by spotting gaps, saved hundreds of hours of manual work.", name: "Ram", role: "Dotpe CRM Lead" },
   },
   {
     slug: "arranged-marriage-platform",
-    client: "Arranged marriage platform",
-    industry: "Services · Workflow automation",
+    client: "Arranged marriage platform (Rishtabook)",
+    industry: "Matrimony · Internal platform",
     headline: "Diaries out. A structured database in.",
     summary: "Replaced a manual partner-tracking diaries with a structured database. Fewer errors, zero manual hassle.",
     metrics: [{ value: "8 hrs", label: "/week saved" }, { value: "40%", label: "more callbacks" }, { value: "Zero", label: "hassle" }],
@@ -90,24 +102,30 @@ export const caseStudies: CaseStudy[] = [
     cover: "/media/cases/rishta-1.jpg",
     gallery: ["/media/cases/rishta-1.jpg", "/media/cases/rishta-2.jpg"],
     accent: "#C2185B",
-    problem: "Partner profiles, preferences and follow-ups were tracked in physical diaries and memory. Matches were missed, callbacks slipped, and onboarding a new team member meant weeks of reading someone else's handwriting.",
-    solution: "We replaced the diaries with a structured database and a simple interface for the team: searchable profiles, preference matching, automatic reminders for callbacks and a daily list of who to reach out to next.",
-    process: "We digitised the existing diaries first so nothing was lost, then built the matching and reminder layer on top. The team was trained in two sessions and were running the platform on their own within the fortnight.",
+    problem: "Groom profiles, photos, and astrology details were tracked in physical diaries and bio-data PDFs read by hand. There was no searchable database, no compatibility scoring, and every match meant re-typing details from a PDF into a diary.",
+    solution: "We replaced the diaries with a structured groom database, Cloudinary photo storage, and one-click PDF bio-data extraction. Astrology compatibility (guna milan) runs automatically through the Prokerala API, with a local fallback and caching so repeat matches are instant.",
+    process: "We digitised the existing groom records first so nothing was lost, then added PDF extraction to cut manual entry. Astrology matching came last — live kundli matching via Prokerala, with a local Ashtakoot fallback and server-side cache to avoid repeat API calls on the same pair.",
     tech: {
-      stack: ["Airtable-style relational database", "Lightweight web app", "Scheduled matching jobs"],
-      integrations: ["WhatsApp reminders", "Google Calendar for callbacks", "Bulk import from scanned diaries"],
-      timeline: "2 weeks to launch",
-      team: "1 builder, 2 coordinators trained",
-      deliverables: ["Searchable profile database", "Preference matching + daily call list", "Automatic callback reminders", "Two training sessions"],
+      stack: ["Next.js 14 (App Router)", "TypeScript", "Tailwind CSS", "lucide-react", "react-hot-toast"],
+      integrations: ["Google Sheets API (service account) as the database", "Cloudinary for photo storage", "Prokerala API for kundli matching"],
+      deliverables: [
+        "Searchable groom database (Google Sheets–backed)",
+        "PDF bio-data extraction",
+        "Photo upload via Cloudinary",
+        "Astrology compatibility scoring (Prokerala + local fallback)",
+        "Password-gated access, 72hr sessions",
+      ],
     },
-    // drop a diagram at /public/media/cases/arranged-marriage-platform-architecture.png and set `image` to show it
-    architecture: { text: "A relational database holds profiles; a nightly matching job writes the daily call list and triggers WhatsApp and Calendar reminders." },
+    architecture: {
+      text: "Groom bio-data (PDF or manual) is parsed and stored in Google Sheets, photos go to Cloudinary. DOB is converted to a nakshatra, then matched against the bride's profile via Prokerala (cached) or a local Ashtakoot fallback — the score shows against each groom in the list.",
+      image: "/media/cases/arranged-marriage-platform-architecture.svg",
+    },
   },
   {
     slug: "qcom-spy-agents",
     client: "QCom Spy Agents",
     industry: "Quick commerce · AI agents",
-    headline: "Competitor pricing, every morning, by pin code.",
+    headline: "Manual checks out. A daily competitor report in.",
     summary: "AI agents that track competitor pricing and availability by pin code, delivered as a daily email report.",
     metrics: [{ value: "₹2L", label: "additional revenue" }, { value: "35%", label: "higher availability" }, { value: "Daily", label: "tracking" }],
     build: "#Build04",
@@ -115,18 +133,24 @@ export const caseStudies: CaseStudy[] = [
     cover: "/media/cases/blinkit-1.jpg",
     gallery: ["/media/cases/blinkit-1.jpg", "/media/cases/blinkit-2.jpg"],
     accent: "#2E3A1F",
-    problem: "A quick-commerce brand had no reliable view of how competitors priced and stocked the same SKUs across pin codes. Pricing decisions were made on gut feel and stale screenshots, and stockouts went unnoticed for days.",
-    solution: "We deployed AI agents that check competitor apps for price and availability by pin code every day, normalise the results, and deliver a clean email report each morning with alerts on price moves and gaps.",
-    process: "We started with a handful of SKUs and two pin codes to prove the data was trustworthy, then scaled coverage weekly. The report format was iterated with the category team until it was the first thing they opened each day.",
+    problem: "D2C brands had no visibility into what competitors were doing on quick-commerce — pricing, stock, and category positioning across Blinkit, Amazon, and social chatter had to be checked manually, if at all.",
+    solution: "The brand owner submits a form — product website link, product name, category. An AI agent scrapes Reddit, Amazon, Blinkit, and other platform scrapers for competitor data, transforms and stores it, then Claude Haiku formats a report which is emailed straight to the owner via Resend.",
+    process: "Built on Gumloop. Started with the intake form and scraping layer, then added transformation and storage once raw data was reliable, and closed the loop with an automated report generation + email step so no manual pull was needed.",
     tech: {
-      stack: ["Python agents on a daily scheduler", "Postgres for price history", "LLM-based SKU matching", "Email report renderer"],
-      integrations: ["Blinkit / Zepto / Instamart storefronts", "Gmail delivery", "Google Sheets export for the category team"],
-      timeline: "1 week pilot, scaled over 4 weeks",
-      team: "1 builder, category lead as reviewer",
-      deliverables: ["Pin-code level price + availability tracking", "Daily morning email report", "Price-move and stockout alerts", "Historical price dashboard"],
+      stack: ["Gumloop (build platform)", "Supabase (database)", "Claude Haiku (report generation)", "Resend (email delivery)"],
+      integrations: ["Reddit scraper", "Amazon scraper", "Blinkit scraper", "Resend for email delivery"],
+      deliverables: [
+        "Intake form (product link, name, category)",
+        "Multi-platform competitor scraping agent",
+        "Data transformation + storage",
+        "Claude Haiku–generated report",
+        "Automated email delivery to brand owner",
+      ],
     },
-    // drop a diagram at /public/media/cases/qcom-spy-agents-architecture.png and set `image` to show it
-    architecture: { text: "Daily Python agents scrape storefronts by pin code, normalise SKUs with an LLM, store history in Postgres and render the morning email." },
+    architecture: {
+      text: "Brand owner submits a form → scraping agent pulls competitor data from Reddit, Amazon, and Blinkit → data is transformed and stored in Supabase → Claude Haiku formats a report → Resend emails it to the owner.",
+      image: "/media/cases/qcom-spy-agents-architecture.svg",
+    },
   },
 ];
 

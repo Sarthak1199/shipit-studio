@@ -7,6 +7,7 @@ import Odometer from "@/components/Odometer";
 import CTABand from "@/components/CTABand";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ToolChip from "@/components/ToolChip";
+import SectionCTA from "@/components/SectionCTA";
 import { Reveal, Item } from "@/components/Reveal";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
@@ -23,7 +24,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   return (
     <>
-      <div className="sticky top-[76px] z-30 sm:top-[80px]">
+      <div className="z-30 md:sticky md:top-[80px]">
         <div className="container-x">
           <Link href="/case-studies" className="glass inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line px-4 font-mono text-xs uppercase tracking-[0.18em] text-muted shadow-soft hover:text-ink">← All case studies</Link>
         </div>
@@ -55,10 +56,10 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </Reveal>
 
           {/* metrics */}
-          <Reveal className="mt-5 grid gap-5 sm:grid-cols-3" amount={0.2}>
+          <Reveal className="hide-scrollbar -mx-5 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-5 sm:mx-0 sm:grid sm:grid-cols-3 sm:gap-5 sm:overflow-visible sm:px-0" amount={0.2}>
             {cs.metrics.map((m, i) => (
-              <Item key={m.value + m.label}>
-                <div className="card p-6 sm:p-7">
+              <Item key={m.value + m.label} className="w-[62vw] shrink-0 snap-center sm:w-auto">
+                <div className="card p-5 sm:p-7">
                   <div className="font-display text-[clamp(2.2rem,4.5vw,3.4rem)] font-medium tracking-tight" style={{ color: i === 0 ? cs.accent : undefined }}><Odometer value={m.value} delay={i * 0.12} /></div>
                   <p className="mt-1 text-sm text-muted">{m.label}</p>
                 </div>
@@ -82,24 +83,23 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               </Item>
             ))}
           </Reveal>
+          <SectionCTA className="mt-10" label="Have a similar headache?" />
         </div>
       </section>
 
       {/* technical details */}
-      <section className="border-t border-line py-20 md:py-28">
+      <section className="border-t border-line py-14 md:py-28">
         <div className="container-x grid gap-10 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <Item><p className="eyebrow">Technical details</p></Item>
             <Item><h2 className="h-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)]">How it&apos;s <em>built.</em></h2></Item>
             <Item><p className="mt-4 text-muted">What runs where, what it talks to, and what was handed over.</p></Item>
           </Reveal>
-          <Reveal className="md:col-span-8" amount={0.15}>
+          <Reveal className="min-w-0 md:col-span-8" amount={0.15}>
             <Item>
-              <div className="card divide-y divide-line">
+              <div className="card min-w-0 divide-y divide-line">
                 <Row k="Stack">{cs.tech.stack.map((s) => <ToolChip key={s} name={s} />)}</Row>
                 <Row k="Integrations">{cs.tech.integrations.map((s) => <ToolChip key={s} name={s} />)}</Row>
-                <Row k="Timeline"><span className="text-ink">{cs.tech.timeline}</span></Row>
-                <Row k="Team"><span className="text-ink">{cs.tech.team}</span></Row>
                 <Row k="Delivered">
                   <ul className="space-y-1.5">{cs.tech.deliverables.map((d) => <li key={d} className="flex gap-2 text-ink"><span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-sage" />{d}</li>)}</ul>
                 </Row>
@@ -110,7 +110,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       </section>
 
       {/* architecture */}
-      <section className="border-t border-line py-20 md:py-28">
+      <section className="border-t border-line py-14 md:py-28">
         <div className="container-x grid gap-10 md:grid-cols-12">
           <Reveal className="md:col-span-4">
             <Item><p className="eyebrow">Architecture</p></Item>
@@ -119,9 +119,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           </Reveal>
           <Reveal className="md:col-span-8" amount={0.2}>
             <Item>
-              <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-line bg-surface shadow-soft">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[28px] border border-line bg-white shadow-soft sm:aspect-[16/10]">
                 {cs.architecture.image ? (
-                  <Image src={cs.architecture.image} alt={`${cs.client} architecture diagram`} fill sizes="(max-width: 768px) 100vw, 760px" className="object-contain p-4" />
+                  <Image src={cs.architecture.image} alt={`${cs.client} architecture diagram`} fill sizes="(max-width: 768px) 100vw, 760px" unoptimized className="object-contain p-3 sm:p-5" />
                 ) : (
                   <div className="grid-paper flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
                     <div className="flex items-center gap-3">
@@ -142,7 +142,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
       </section>
 
       {/* impact */}
-      <section className="border-t border-line py-20 md:py-28">
+      <section className="border-t border-line py-14 md:py-28">
         <div className="container-x grid gap-10 md:grid-cols-12 md:items-start">
           <Reveal className="md:col-span-5">
             <Item><p className="eyebrow">Impact</p></Item>
@@ -176,7 +176,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
-      <section className="border-t border-line py-20">
+      <section className="border-t border-line py-14 md:py-20">
         <div className="container-x">
           <Reveal className="flex items-end justify-between">
             <Item><h2 className="font-display text-2xl font-medium tracking-tight sm:text-3xl">More builds</h2></Item>
@@ -194,9 +194,9 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
 function Row({ k, children }: { k: string; children: React.ReactNode }) {
   return (
-    <div className="grid gap-2 p-6 sm:grid-cols-[140px_1fr] sm:gap-6 sm:p-7">
+    <div className="grid min-w-0 gap-2 p-5 sm:grid-cols-[140px_1fr] sm:gap-6 sm:p-7">
       <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">{k}</span>
-      <div className="flex flex-wrap gap-2 text-[15px]">{children}</div>
+      <div className="flex min-w-0 flex-wrap gap-2 text-[15px]">{children}</div>
     </div>
   );
 }

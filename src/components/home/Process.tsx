@@ -1,6 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { Reveal, Item } from "@/components/Reveal";
+import SectionCTA from "@/components/SectionCTA";
 
 const steps = [
   { n: "01", title: "Tell us the headaches", desc: "30-min call, no fluff. We get back with a detailed scope and a prototype within the week.", tag: "Week 0" },
@@ -8,34 +9,33 @@ const steps = [
   { n: "03", title: "We iterate & maintain", desc: "As your business changes, so does the tool and we’re right there to support you.", tag: "Ongoing" },
 ];
 
-const snappy = {
-  hidden: { opacity: 0, y: 28, scale: 0.97 },
-  show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } },
-};
-
+/** Cards stack vertically and each one slides in on its own as it scrolls into view. */
 export default function Process() {
   return (
     <section id="process" className="section scroll-mt-[84px]">
       <div className="container-x">
         <Reveal className="text-center">
           <Item><p className="eyebrow">Process</p></Item>
-          <Item><h2 className="h-display mx-auto mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.9rem)]">No roadmaps. We ship <em>weekly,</em> not quarterly.</h2></Item>
+          <Item><h2 className="h-display mx-auto mt-4 max-w-3xl text-[clamp(2rem,5vw,3.9rem)]">No roadmaps. We ship <em>weekly,</em> not quarterly.</h2></Item>
         </Reveal>
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}
-          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }} className="mt-12 grid gap-5 md:mt-16 md:grid-cols-3">
-          {steps.map((s) => (
-            <motion.div key={s.n} variants={snappy}
-              className="group card relative flex flex-col p-7 transition-[box-shadow,transform] duration-300 hover:-translate-y-1.5 hover:shadow-lift sm:p-8">
-              <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[28px] bg-[linear-gradient(180deg,#DFE7EC_0%,rgba(255,255,255,0)_60%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <div className="relative flex items-center justify-between">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-line bg-white font-display text-lg italic text-moss transition-colors duration-300 group-hover:bg-moss group-hover:text-bg">{s.n}</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">{s.tag}</span>
+        <div className="mx-auto mt-10 flex max-w-2xl flex-col gap-4 md:mt-14">
+          {steps.map((s, i) => (
+            <motion.div key={s.n} initial={{ opacity: 0, y: 40, scale: 0.97 }} whileInView={{ opacity: 1, y: 0, scale: 1 }} viewport={{ once: true, amount: 0.45 }}
+              transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="group card sticky flex flex-col p-6 transition-shadow duration-300 hover:shadow-lift sm:flex-row sm:items-start sm:gap-6 sm:p-8"
+              style={{ top: `${96 + i * 14}px` }}>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-white font-display text-lg italic text-moss transition-colors duration-300 group-hover:bg-moss group-hover:text-bg">{s.n}</span>
+              <div className="mt-4 sm:mt-0">
+                <div className="flex items-center gap-3">
+                  <h3 className="font-display text-[1.45rem] font-medium leading-tight tracking-tight sm:text-[1.6rem]">{s.title}</h3>
+                  <span className="hidden font-mono text-[11px] uppercase tracking-[0.18em] text-muted sm:inline">{s.tag}</span>
+                </div>
+                <p className="mt-2 leading-relaxed text-muted">{s.desc}</p>
               </div>
-              <h3 className="relative mt-8 font-display text-[1.6rem] font-medium leading-tight tracking-tight">{s.title}</h3>
-              <p className="relative mt-3 leading-relaxed text-muted">{s.desc}</p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
+        <SectionCTA className="mt-12" label="Start at step one." />
       </div>
     </section>
   );

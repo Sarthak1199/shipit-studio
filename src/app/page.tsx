@@ -7,6 +7,7 @@ import Testimonials from "@/components/home/Testimonials";
 import Process from "@/components/home/Process";
 import Reels from "@/components/home/Reels";
 import About from "@/components/home/About";
+import Pricing from "@/components/home/Pricing";
 import FAQ from "@/components/home/FAQ";
 import CTABand from "@/components/CTABand";
 
@@ -22,6 +23,7 @@ export default function Home() {
       <Process />
       <Reels />
       <About />
+      <Pricing />
       <FAQ />
       <CTABand />
     </>

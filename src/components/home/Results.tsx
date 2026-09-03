@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Odometer from "@/components/Odometer";
 import { Reveal, Item } from "@/components/Reveal";
+import SectionCTA from "@/components/SectionCTA";
 
 export default function Results() {
   return (
@@ -46,6 +47,7 @@ export default function Results() {
             </div>
           </Item>
         </Reveal>
+        <SectionCTA className="mt-10" label="Want numbers like these?" />
       </div>
     </section>
   );

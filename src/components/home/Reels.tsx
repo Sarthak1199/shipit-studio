@@ -2,6 +2,7 @@ import { reels } from "@/data/reels";
 import { site } from "@/data/site";
 import InstagramEmbed from "@/components/InstagramEmbed";
 import { Reveal, Item } from "@/components/Reveal";
+import SectionCTA from "@/components/SectionCTA";
 
 export default function Reels() {
   return (
@@ -24,6 +25,7 @@ export default function Reels() {
             </div>
           ))}
         </div>
+        <SectionCTA className="mt-8" label="Seen enough? Let’s talk." />
       </div>
     </section>
   );

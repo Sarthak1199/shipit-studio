@@ -2,6 +2,7 @@ import Link from "next/link";
 import { caseStudies } from "@/data/case-studies";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import { Reveal, Item } from "@/components/Reveal";
+import SectionCTA from "@/components/SectionCTA";
 
 export default function CaseStudies() {
   return (
@@ -14,7 +15,8 @@ export default function CaseStudies() {
         <Reveal className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2" amount={0.1}>
           {caseStudies.map((cs) => <Item key={cs.slug} className="h-full"><CaseStudyCard cs={cs} /></Item>)}
         </Reveal>
-        <Reveal className="mt-10 text-center"><Item><Link href="/case-studies" className="btn btn-ghost">All case studies →</Link></Item></Reveal>
+        <Reveal className="mt-8 text-center"><Item><Link href="/case-studies" className="btn btn-ghost">All case studies →</Link></Item></Reveal>
+        <SectionCTA className="mt-8" label="Your build could be next." />
       </div>
     </section>
   );

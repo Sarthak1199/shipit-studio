@@ -1,7 +1,7 @@
 export type Faq = { q: string; a: string };
 
 export const faqs: Faq[] = [
-  { q: "What does it cost?", a: "Fixed price per build, quoted after the scope call. No hourly billing, no retainer you forget to cancel. If the scope changes, we requote before we build." },
+  { q: "What does it cost?", a: "Fixed price per build, quoted after the scope call. No hourly billing, no retainer you forget to cancel. If the scope changes, we requote before we build. Starting prices: AI agents & automations from ₹70,000 · Internal platforms & webapps from ₹2,00,000 · Enterprise AI systems from ₹7,00,000." },
   { q: "We've tried AI before and it went nowhere. Why is this different?", a: "Most AI projects die because someone bought a platform and then looked for a problem. We start from your actual workflow and ship something you use in week one. If it's not useful, you find out in days, not after a quarter." },
   { q: "We don't know what to automate. Where do we start?", a: "That's the scope call. Tell us what your team does manually every week. We'll tell you which one is worth fixing first, and which ones aren't worth paying us for." },
   { q: "What will this take from our team?", a: "One 20-minute scope call, access to the tools we're connecting, and one person who answers questions during the build. That's it. You don't staff a project team." },
