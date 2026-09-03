@@ -6,6 +6,7 @@ import { caseStudies, getCaseStudy } from "@/data/case-studies";
 import Odometer from "@/components/Odometer";
 import CTABand from "@/components/CTABand";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import ToolChip from "@/components/ToolChip";
 import { Reveal, Item } from "@/components/Reveal";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
@@ -42,19 +43,12 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <Item><p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl">{cs.summary}</p></Item>
           </Reveal>
 
-          {/* media */}
-          <Reveal className={`mt-12 grid gap-5 ${cs.gallery.length > 1 ? "md:grid-cols-2" : ""}`} amount={0.2}>
+          {/* media — contained, not full-bleed */}
+          <Reveal className={`mx-auto mt-12 grid max-w-4xl gap-4 ${cs.gallery.length > 1 ? "sm:grid-cols-2" : ""}`} amount={0.2}>
             {cs.gallery.map((src, i) => (
               <Item key={src}>
-                <div className="group relative aspect-[16/10] overflow-hidden rounded-[28px] bg-surface2 shadow-soft">
-                  <Image src={src} alt={`${cs.client} — screen ${i + 1}`} fill sizes="(max-width: 768px) 100vw, 600px" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" />
-                  {i === 0 && (
-                    <div className="absolute inset-x-4 bottom-4 flex flex-wrap gap-2">
-                      {cs.metrics.map((m) => (
-                        <span key={m.value + m.label} className="rounded-full bg-ink/75 px-3 py-1.5 text-xs text-white backdrop-blur-md"><b className="font-semibold">{m.value}</b> {m.label}</span>
-                      ))}
-                    </div>
-                  )}
+                <div className="group relative aspect-[16/10] overflow-hidden rounded-[20px] border border-line bg-surface2 shadow-soft">
+                  <Image src={src} alt={`${cs.client} — screen ${i + 1}`} fill sizes="(max-width: 640px) 100vw, 440px" className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]" />
                 </div>
               </Item>
             ))}
@@ -102,13 +96,45 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
           <Reveal className="md:col-span-8" amount={0.15}>
             <Item>
               <div className="card divide-y divide-line">
-                <Row k="Stack">{cs.tech.stack.map((s) => <Chip key={s}>{s}</Chip>)}</Row>
-                <Row k="Integrations">{cs.tech.integrations.map((s) => <Chip key={s}>{s}</Chip>)}</Row>
+                <Row k="Stack">{cs.tech.stack.map((s) => <ToolChip key={s} name={s} />)}</Row>
+                <Row k="Integrations">{cs.tech.integrations.map((s) => <ToolChip key={s} name={s} />)}</Row>
                 <Row k="Timeline"><span className="text-ink">{cs.tech.timeline}</span></Row>
                 <Row k="Team"><span className="text-ink">{cs.tech.team}</span></Row>
                 <Row k="Delivered">
                   <ul className="space-y-1.5">{cs.tech.deliverables.map((d) => <li key={d} className="flex gap-2 text-ink"><span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-sage" />{d}</li>)}</ul>
                 </Row>
+              </div>
+            </Item>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* architecture */}
+      <section className="border-t border-line py-20 md:py-28">
+        <div className="container-x grid gap-10 md:grid-cols-12">
+          <Reveal className="md:col-span-4">
+            <Item><p className="eyebrow">Architecture</p></Item>
+            <Item><h2 className="h-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)]">How the pieces <em>connect.</em></h2></Item>
+            <Item><p className="mt-4 text-muted">{cs.architecture.text}</p></Item>
+          </Reveal>
+          <Reveal className="md:col-span-8" amount={0.2}>
+            <Item>
+              <div className="relative aspect-[16/9] overflow-hidden rounded-[28px] border border-line bg-surface shadow-soft">
+                {cs.architecture.image ? (
+                  <Image src={cs.architecture.image} alt={`${cs.client} architecture diagram`} fill sizes="(max-width: 768px) 100vw, 760px" className="object-contain p-4" />
+                ) : (
+                  <div className="grid-paper flex h-full flex-col items-center justify-center gap-3 p-6 text-center">
+                    <div className="flex items-center gap-3">
+                      {["Input", "Agent", "Store", "Output"].map((n, i) => (
+                        <div key={n} className="flex items-center gap-3">
+                          <span className="rounded-xl border border-line bg-white px-4 py-2 font-mono text-xs text-ink shadow-soft">{n}</span>
+                          {i < 3 && <span className="text-muted">→</span>}
+                        </div>
+                      ))}
+                    </div>
+                    <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted">Diagram slot · /media/cases/{cs.slug}-architecture.png</p>
+                  </div>
+                )}
               </div>
             </Item>
           </Reveal>
@@ -173,7 +199,4 @@ function Row({ k, children }: { k: string; children: React.ReactNode }) {
       <div className="flex flex-wrap gap-2 text-[15px]">{children}</div>
     </div>
   );
-}
-function Chip({ children }: { children: React.ReactNode }) {
-  return <span className="rounded-full border border-line bg-bg px-3 py-1 text-sm text-ink">{children}</span>;
 }

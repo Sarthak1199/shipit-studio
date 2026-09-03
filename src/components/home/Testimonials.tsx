@@ -6,6 +6,7 @@ import { Reveal, Item } from "@/components/Reveal";
 const items = [
   { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder, Lexi's" },
   { quote: "They turned our scattered CRM data and ops work into one live dashboard. Recovered 40% revenue by spotting gaps, saved hundreds of hours of manual work.", name: "Ram", role: "DotPe CRM Lead" },
+  { quote: "Sarthak gave us AI-generated ad creatives we could actually run, a spy tool that tells us what competitors are doing on quick commerce every morning, and agents that turn product reviews into landing pages. Turnaround went from days to hours, and our ad ROAS went up.", name: "Sahil", role: "Co-founder, MyMuse" },
 ];
 
 /** Partial-peek carousel: ~1.3 cards visible, drag on desktop, swipe on touch. */

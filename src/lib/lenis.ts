@@ -7,7 +7,7 @@ export const setLenis = (l: Lenis | null) => {
 export const getLenis = () => instance;
 
 /** Scroll to a hash/element, using Lenis when available. */
-export const scrollToTarget = (target: string | HTMLElement, offset = -80) => {
+export const scrollToTarget = (target: string | HTMLElement, offset = 0) => {
   const l = getLenis();
   if (l) {
     l.scrollTo(target, { offset, duration: 1.2 });

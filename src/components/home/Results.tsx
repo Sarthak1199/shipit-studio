@@ -4,7 +4,7 @@ import { Reveal, Item } from "@/components/Reveal";
 
 export default function Results() {
   return (
-    <section id="results" className="section scroll-mt-24">
+    <section id="results" className="section scroll-mt-[84px]">
       <div className="container-x">
         <Reveal className="text-center">
           <Item><p className="eyebrow">Results</p></Item>

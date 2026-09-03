@@ -15,7 +15,7 @@ const snappy = {
 
 export default function Process() {
   return (
-    <section id="process" className="section scroll-mt-24">
+    <section id="process" className="section scroll-mt-[84px]">
       <div className="container-x">
         <Reveal className="text-center">
           <Item><p className="eyebrow">Process</p></Item>

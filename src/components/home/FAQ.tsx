@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section id="faqs" className="section scroll-mt-24 border-t border-line">
+    <section id="faqs" className="section scroll-mt-[84px] border-t border-line">
       <div className="container-x grid gap-10 md:grid-cols-12">
         <Reveal className="md:col-span-4">
           <Item><p className="eyebrow">FAQs</p></Item>

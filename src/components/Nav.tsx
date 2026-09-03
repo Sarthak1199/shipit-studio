@@ -7,7 +7,6 @@ import { navLinks, site } from "@/data/site";
 import { getLenis, scrollToTarget } from "@/lib/lenis";
 import { cn } from "@/lib/cn";
 import Magnetic from "./Magnetic";
-import Image from "next/image";
 import { useRef } from "react";
 
 export default function Nav() {
@@ -61,8 +60,8 @@ export default function Nav() {
         className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6"
       >
         <div className="mx-auto flex max-w-[1240px] items-center justify-between">
-          <Link href="/" onClick={onLogo} aria-label="ShipIt Studio home" title="ShipIt Studio" className="flex h-11 items-center">
-            <Image src="/media/logo.png" alt="ShipIt Studio" width={2172} height={400} priority className="h-8 w-auto sm:h-9" />
+          <Link href="/" onClick={onLogo} aria-label="ShipIt Studio home" className="flex h-11 items-center font-display text-[21px] font-medium tracking-tight text-ink">
+            ShipIt Studio
           </Link>
 
           <div className={cn("hidden items-center gap-1 rounded-full border p-1.5 transition-all duration-500 lg:flex", scrolled ? "glass border-line shadow-soft" : "border-transparent bg-white/50", compact && "scale-[0.96]")}>

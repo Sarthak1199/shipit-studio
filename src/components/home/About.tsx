@@ -25,16 +25,18 @@ export default function About() {
           <Item><p className="eyebrow">About</p></Item>
           <Item><h2 className="h-display mt-4 text-[clamp(2.4rem,6vw,4.4rem)]">Hi, I&apos;m <em>Sarthak</em></h2></Item>
           <Item>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/85">Four years as a Product Manager driving growth and conversion at scale at Zomato and MyMuse.</p>
-            <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink/85">Hands-on with the stack: GPT-powered agent workflows, automation tooling, and a SQL, Python and analytics toolkit that ships.</p>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-ink/85">B.E. in Instrumentation &amp; Control from NSUT (NSIT). Consumer-tech PM who ran Zomato Gold for its 23M-user base alongside Zomato&apos;s AI/ML teams.</p>
+            <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink/85">Then B2B: restaurant-tech and CRM at DotPe, building the internal tools and automations this studio now ships for others.</p>
           </Item>
           <Item>
-            <div className="mt-8 flex gap-3">
-              <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="btn btn-ghost h-12 w-12 px-0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" /></svg>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="btn btn-ghost gap-2 text-ink">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F2416" strokeWidth="1.9" aria-hidden><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="#1F2416" stroke="none" /></svg>
+                Instagram
               </a>
-              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="btn btn-ghost h-12 w-12 px-0">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M6.5 8.5A1.75 1.75 0 1 1 6.5 5a1.75 1.75 0 0 1 0 3.5ZM5 10h3v9H5v-9Zm5 0h2.8v1.3c.4-.8 1.5-1.5 3-1.5 3.1 0 3.7 2 3.7 4.6V19h-3v-4c0-1 0-2.2-1.4-2.2s-1.6 1-1.6 2.1V19h-3v-9Z" /></svg>
+              <a href={site.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-ghost gap-2 text-ink">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden><rect x="2" y="2" width="20" height="20" rx="4" fill="#1F2416" /><path fill="#F5F5F0" d="M7.2 9.4h2.3V17H7.2V9.4Zm1.15-3.6a1.35 1.35 0 1 1 0 2.7 1.35 1.35 0 0 1 0-2.7ZM10.9 9.4h2.2v1.05c.35-.65 1.2-1.25 2.45-1.25 2.6 0 3.1 1.7 3.1 3.9V17h-2.3v-3.45c0-.85-.02-1.9-1.2-1.9-1.2 0-1.35.9-1.35 1.85V17h-2.3V9.4Z" /></svg>
+                LinkedIn
               </a>
             </div>
           </Item>

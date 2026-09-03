@@ -10,7 +10,7 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="section scroll-mt-24">
+    <section id="services" className="section scroll-mt-[84px]">
       <div className="container-x">
         <Reveal className="text-center">
           <Item><p className="eyebrow">Services</p></Item>

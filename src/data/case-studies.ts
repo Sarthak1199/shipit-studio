@@ -17,6 +17,7 @@ export type CaseStudy = {
   solution: string;
   process: string;
   tech: Tech;
+  architecture: { text: string; image?: string };
   testimonial?: { quote: string; name: string; role: string };
 };
 
@@ -46,6 +47,8 @@ export const caseStudies: CaseStudy[] = [
       team: "1 builder, 1 point of contact at Lexi's",
       deliverables: ["Mobile inwarding flow", "PO ↔ GRN matching", "Live stock and supplier dashboard", "SOP doc + on-site training"],
     },
+    // drop a diagram at /public/media/cases/lexis-sandwich-shop-architecture.png and set `image` to show it
+    architecture: { text: "Invoices come in over WhatsApp, get read by a vision model, are matched to open POs in Postgres and surface on a Next.js dashboard." },
     testimonial: { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder Lexi's" },
   },
   {
@@ -71,6 +74,8 @@ export const caseStudies: CaseStudy[] = [
       team: "1 builder, CRM lead + 2 ops analysts as reviewers",
       deliverables: ["Sales and ops analytics dashboards", "Vendor onboarding pipeline", "Segment-aware template generator", "Runbooks + recorded training"],
     },
+    // drop a diagram at /public/media/cases/dotpe-crm-internal-brain-architecture.png and set `image` to show it
+    architecture: { text: "Scheduled BigQuery views feed a Next.js dashboard; Cloud Run workers run onboarding and template generation and push alerts to Slack." },
     testimonial: { quote: "They turned our scattered CRM data and ops work into one live dashboard. Recovered 40% revenue by spotting gaps, saved hundreds of hours of manual work.", name: "Ram", role: "Dotpe CRM Lead" },
   },
   {
@@ -95,6 +100,8 @@ export const caseStudies: CaseStudy[] = [
       team: "1 builder, 2 coordinators trained",
       deliverables: ["Searchable profile database", "Preference matching + daily call list", "Automatic callback reminders", "Two training sessions"],
     },
+    // drop a diagram at /public/media/cases/arranged-marriage-platform-architecture.png and set `image` to show it
+    architecture: { text: "A relational database holds profiles; a nightly matching job writes the daily call list and triggers WhatsApp and Calendar reminders." },
   },
   {
     slug: "qcom-spy-agents",
@@ -118,6 +125,8 @@ export const caseStudies: CaseStudy[] = [
       team: "1 builder, category lead as reviewer",
       deliverables: ["Pin-code level price + availability tracking", "Daily morning email report", "Price-move and stockout alerts", "Historical price dashboard"],
     },
+    // drop a diagram at /public/media/cases/qcom-spy-agents-architecture.png and set `image` to show it
+    architecture: { text: "Daily Python agents scrape storefronts by pin code, normalise SKUs with an LLM, store history in Postgres and render the morning email." },
   },
 ];
 

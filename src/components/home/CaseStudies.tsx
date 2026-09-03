@@ -5,7 +5,7 @@ import { Reveal, Item } from "@/components/Reveal";
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="section scroll-mt-24">
+    <section id="case-studies" className="section scroll-mt-[84px]">
       <div className="container-x">
         <Reveal className="text-center">
           <Item><p className="eyebrow">Case studies</p></Item>

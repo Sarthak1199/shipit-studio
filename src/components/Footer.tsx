@@ -17,7 +17,7 @@ export default function Footer() {
       <div aria-hidden className="absolute inset-0 bg-[linear-gradient(180deg,#F5F5F0_0%,rgba(245,245,240,.92)_35%,rgba(245,245,240,.55)_70%,rgba(245,245,240,.35)_100%)]" />
       <div className="container-x relative grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <Link href="/" className="inline-flex"><Image src="/media/logo.png" alt="ShipIt Studio" width={2172} height={400} className="h-10 w-auto" /></Link>
+          <Link href="/" className="font-display text-2xl font-medium tracking-tight">ShipIt Studio</Link>
           <p className="mt-4 max-w-sm font-display text-lg italic text-ink/80">{site.tagline}</p>
           <p className="eyebrow mt-8">Follow us</p>
           <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-[44px] items-center gap-2 text-ink hover:text-leaf">
@@ -48,6 +48,10 @@ export default function Footer() {
         <div className="container-x flex flex-col gap-2 py-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink/70 sm:flex-row sm:items-center sm:justify-between">
           <span>All Rights Reserved © 2026 by ShipIt Studio</span><span>Gurugram, India</span>
         </div>
+      </div>
+      {/* full-bleed gradient wordmark, cropped at both edges */}
+      <div aria-hidden className="relative -mb-[2%] w-full overflow-hidden">
+        <Image src="/media/logo.png" alt="" width={2172} height={400} sizes="110vw" className="relative left-1/2 w-[112vw] max-w-none -translate-x-1/2 opacity-90" />
       </div>
     </footer>
   );
