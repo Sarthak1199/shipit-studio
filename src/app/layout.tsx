@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, DM_Sans, JetBrains_Mono, Manrope } from "next/font/google";
+import { Inter, IBM_Plex_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -11,21 +11,28 @@ import EasterEgg from "@/components/EasterEgg";
 import MobileCTABar from "@/components/MobileCTABar";
 import { site } from "@/data/site";
 
-const fraunces = Fraunces({ subsets: ["latin"], weight: "variable", style: ["normal", "italic"], axes: ["opsz", "SOFT"], variable: "--font-fraunces", display: "swap" });
-const dm = DM_Sans({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-dm", display: "swap" });
-const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600", "700"], variable: "--font-manrope", display: "swap" });
-const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
+const inter = Inter({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-inter", display: "swap" });
+const manrope = Manrope({ subsets: ["latin"], weight: ["500", "600", "700", "800"], variable: "--font-manrope", display: "swap" });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
 export const metadata: Metadata = {
   title: { default: `${site.name} — Pick your headache. We'll automate it.`, template: `%s — ${site.name}` },
   description: site.tagline,
   openGraph: { title: site.name, description: site.tagline, type: "website" },
+  icons: {
+    icon: [
+      { url: "/icon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
 };
-export const viewport: Viewport = { themeColor: "#F5F5F0", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = { themeColor: "#FAFAF9", width: "device-width", initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${dm.variable} ${mono.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${inter.variable} ${mono.variable} ${manrope.variable}`}>
       <body>
         <Providers>
           <SmoothScroll />

@@ -63,7 +63,8 @@ export default function EasterEgg() {
             </div>
 
             <div className="p-5 sm:p-7">
-              <p className="eyebrow">Website built by AI</p>
+              <Image src="/media/symbol.png" alt="" width={200} height={100} className="h-8 w-auto opacity-90" />
+              <p className="eyebrow mt-3">Website built by AI</p>
               <h2 className="h-display mt-3 min-h-[2.2em] text-[clamp(1.5rem,3.4vw,2.2rem)]">
                 {typed}<span className="ml-0.5 inline-block h-[0.9em] w-[0.08em] translate-y-[3px] animate-pulse bg-moss" />
               </h2>
@@ -78,7 +79,7 @@ export default function EasterEgg() {
               </dl>
 
               <button type="button" onClick={() => setShowPrompt((v) => !v)} aria-expanded={showPrompt}
-                className="mt-5 inline-flex min-h-[44px] items-center gap-2 font-display text-lg italic text-moss hover:underline">
+                className="mt-5 inline-flex min-h-[44px] items-center gap-2 font-display text-lg font-semibold text-moss hover:underline">
                 {showPrompt ? "Hide the prompt" : "See the prompt used"}
                 <span className={`transition-transform ${showPrompt ? "rotate-90" : ""}`}>→</span>
               </button>

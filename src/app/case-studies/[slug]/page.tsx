@@ -60,7 +60,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               <Item key={m.value + m.label} className="min-w-0">
                 <div className="card h-full p-3 sm:p-7">
                   <div className="font-display text-[clamp(1.35rem,5.5vw,3.4rem)] font-medium leading-none tracking-tight" style={{ color: i === 0 ? cs.accent : undefined }}><Odometer value={m.value} delay={i * 0.12} /></div>
-                  <p className="mt-1.5 text-[11px] leading-snug text-muted sm:text-sm">{m.label}</p>
+                  <p className="mt-1.5 font-mono text-[11px] uppercase tracking-wide leading-snug text-muted sm:text-[13px]">{m.label}</p>
                 </div>
               </Item>
             ))}
@@ -75,7 +75,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             {blocks.map((b, i) => (
               <Item key={b.k} className="h-full">
                 <div className="card h-full p-7 sm:p-8">
-                  <span className="font-display text-4xl italic" style={{ color: cs.accent }}>0{i + 1}</span>
+                  <span className="font-display text-4xl font-semibold" style={{ color: cs.accent }}>0{i + 1}</span>
                   <h2 className="mt-5 font-display text-2xl font-medium tracking-tight">{b.k}</h2>
                   <p className="mt-3 leading-relaxed text-muted">{b.v}</p>
                 </div>
@@ -139,40 +139,21 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
         </div>
       </section>
 
-      {/* impact */}
-      <section className="border-t border-line py-14 md:py-28">
-        <div className="container-x grid gap-10 md:grid-cols-12 md:items-start">
-          <Reveal className="md:col-span-5">
-            <Item><p className="eyebrow">Impact</p></Item>
-            <Item><h2 className="h-display mt-4 text-[clamp(2rem,4.5vw,3.2rem)]">{cs.headline}</h2></Item>
-            <Item>
-              <div className="mt-8 flex flex-wrap gap-3">
-                {cs.metrics.map((m) => (
-                  <div key={m.value + m.label} className="flex items-baseline gap-2 rounded-full border border-line bg-white px-5 py-3 shadow-soft">
-                    <span className="font-display text-2xl font-medium">{m.value}</span><span className="text-muted">{m.label}</span>
-                  </div>
-                ))}
-              </div>
-            </Item>
-          </Reveal>
-          <Reveal className="md:col-span-7" amount={0.3}>
-            <Item>
-              {cs.testimonial ? (
-                <figure className="card p-8 sm:p-10">
-                  <span className="font-display text-6xl leading-none" style={{ color: cs.accent }}>“</span>
+      {cs.testimonial && (
+        <section className="border-t border-line py-14 md:py-20">
+          <div className="container-x">
+            <Reveal amount={0.3}>
+              <Item>
+                <figure className="card mx-auto max-w-3xl p-8 sm:p-10">
+                  <span className="font-display text-5xl leading-none text-muted">“</span>
                   <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{cs.testimonial.quote}</blockquote>
                   <figcaption className="mt-6 text-muted"><span className="font-semibold text-ink">{cs.testimonial.name}</span> · {cs.testimonial.role}</figcaption>
                 </figure>
-              ) : (
-                <div className="relative overflow-hidden rounded-[28px] shadow-soft">
-                  <Image src="/media/hills-wide.jpg" alt="" width={1200} height={720} sizes="(max-width: 768px) 100vw, 640px" className="aspect-[16/9] w-full object-cover" />
-                  <p className="absolute inset-x-5 bottom-5 rounded-2xl bg-white/75 p-4 font-display text-lg italic backdrop-blur-md">Numbers reported by the client after launch.</p>
-                </div>
-              )}
-            </Item>
-          </Reveal>
-        </div>
-      </section>
+              </Item>
+            </Reveal>
+          </div>
+        </section>
+      )}
 
       <section className="border-t border-line py-14 md:py-20">
         <div className="container-x">

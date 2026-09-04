@@ -8,6 +8,7 @@ import { getLenis, scrollToTarget } from "@/lib/lenis";
 import { cn } from "@/lib/cn";
 import Magnetic from "./Magnetic";
 import WhatsAppIcon from "./WhatsAppIcon";
+import Image from "next/image";
 
 export default function Nav() {
   const pathname = usePathname();
@@ -45,8 +46,8 @@ export default function Nav() {
           "pointer-events-auto flex w-full items-center justify-between gap-2 rounded-full border border-white/70 bg-white/55 pl-4 pr-1.5 shadow-[0_1px_0_rgba(255,255,255,.6)_inset,0_10px_30px_-12px_rgba(31,36,22,.25)] backdrop-blur-xl backdrop-saturate-150 transition-[height,background-color] duration-300 lg:w-auto lg:pl-5",
           compact ? "h-11 bg-white/70 sm:h-12" : "h-[52px] sm:h-14"
         )}>
-          <Link href="/" onClick={(e) => onNav(e, "/")} aria-label="ShipIt Studio home" className={cn("flex items-center font-display font-medium tracking-tight text-ink transition-[font-size] duration-300", compact ? "text-[18px]" : "text-[20px]")}>
-            ShipIt Studio
+          <Link href="/" onClick={(e) => onNav(e, "/")} aria-label="ShipIt Studio home" className="flex items-center">
+            <Image src="/media/logo.png" alt="ShipIt Studio" width={1748} height={247} priority className={cn("w-auto transition-[height] duration-300", compact ? "h-5" : "h-6")} />
           </Link>
 
           <nav className="hidden items-center lg:flex lg:px-2" aria-label="Primary">

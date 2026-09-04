@@ -17,7 +17,7 @@ export default function CaseStudyCard({ cs }: { cs: CaseStudy }) {
           {cs.metrics.map((m) => (
             <div key={m.value + m.label}>
               <div className="font-display text-[clamp(1.35rem,2.4vw,1.8rem)] font-medium leading-none tracking-tight">{m.value}</div>
-              <div className="mt-1 text-[12px] leading-snug text-muted">{m.label}</div>
+              <div className="mt-1 font-mono text-[11px] uppercase tracking-wide leading-snug text-muted">{m.label}</div>
             </div>
           ))}
         </div>

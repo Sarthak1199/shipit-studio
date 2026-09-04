@@ -25,8 +25,8 @@ export default function Footer() {
         <div className="flex items-start justify-between gap-4 md:hidden">
           <div>
             <div className="mb-3"><EggStamp /></div>
-            <Link href="/" className="font-brand text-xl font-bold tracking-tight">ShipIt Studio</Link>
-            <p className="mt-1 max-w-[260px] font-brand text-sm text-ink/75">{site.tagline}</p>
+            <Link href="/" className="inline-flex"><Image src="/media/logo.png" alt="ShipIt Studio" width={1748} height={247} className="h-6 w-auto" /></Link>
+            <p className="mt-2 max-w-[260px] font-brand text-sm text-ink/75">{site.tagline}</p>
           </div>
           <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-line bg-white/70 text-ink">
             <InstaIcon />
@@ -66,7 +66,7 @@ export default function Footer() {
         <div className="hidden gap-12 md:grid md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="mb-4"><EggStamp /></div>
-            <Link href="/" className="font-brand text-2xl font-bold tracking-tight">ShipIt Studio</Link>
+            <Link href="/" className="inline-flex"><Image src="/media/logo.png" alt="ShipIt Studio" width={1748} height={247} className="h-8 w-auto" /></Link>
             <p className="mt-4 max-w-sm font-brand text-base text-ink/80">{site.tagline}</p>
             <p className="mt-8 font-brand text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/70">Follow us</p>
             <a href={site.instagram} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-[44px] items-center gap-2 text-ink hover:text-leaf"><InstaIcon />@{site.instagramHandle}</a>

@@ -23,7 +23,7 @@ export default function Process() {
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
               className="group card sticky flex flex-col p-6 transition-shadow duration-300 hover:shadow-lift sm:flex-row sm:items-start sm:gap-6 sm:p-8"
               style={{ top: `${96 + i * 14}px` }}>
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-white font-display text-lg italic text-moss transition-colors duration-300 group-hover:bg-moss group-hover:text-bg">{s.n}</span>
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line bg-white font-display text-lg font-semibold text-moss transition-colors duration-300 group-hover:bg-moss group-hover:text-bg">{s.n}</span>
               <div className="mt-4 sm:mt-0">
                 <div className="flex items-center gap-3">
                   <h3 className="font-display text-[1.45rem] font-medium leading-tight tracking-tight sm:text-[1.6rem]">{s.title}</h3>

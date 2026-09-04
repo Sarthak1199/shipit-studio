@@ -26,14 +26,14 @@ body { @apply bg-bg text-ink font-body antialiased; }
   -webkit-backdrop-filter: blur(18px) saturate(140%);
 }
 
-.h-display { @apply font-display font-medium tracking-[-0.02em] leading-[1.04]; }
-.h-display em, .serif-accent { @apply font-display italic font-normal; }
+.h-display { @apply font-display font-medium tracking-[-0.025em] leading-[1.05]; }
+.h-display em, .serif-accent { @apply font-display not-italic font-semibold text-ink; }
 .eyebrow { @apply font-mono text-[11px] uppercase tracking-[0.2em] text-muted; }
 
 .btn {
   @apply inline-flex h-12 min-w-[44px] items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 text-[15px] font-medium transition-[background-color,border-color,color,transform,box-shadow] duration-300 will-change-transform;
 }
-.btn-primary { @apply bg-moss text-bg shadow-soft hover:bg-[#3a4a28]; }
+.btn-primary { @apply bg-ink text-bg shadow-soft hover:bg-[#2a2a2a]; }
 .btn-ghost { @apply border border-line bg-white/70 text-ink hover:bg-white; }
 .btn-cream { @apply bg-bg text-moss hover:bg-white; }
 

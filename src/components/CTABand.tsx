@@ -11,7 +11,7 @@ export default function CTABand() {
       <div className="relative py-8 md:py-10">
         <Marquee duration={26} mask={false}>
           {[0, 1, 2, 3].map((i) => (
-            <a key={i} href={site.calendly} target="_blank" rel="noopener noreferrer" className="flex items-center font-display text-[clamp(2.6rem,8vw,6.5rem)] italic leading-none tracking-tight">
+            <a key={i} href={site.calendly} target="_blank" rel="noopener noreferrer" className="flex items-center font-display text-[clamp(2.6rem,8vw,6.5rem)] font-semibold leading-none tracking-tight">
               <span className="mx-6 h-2 w-2 rounded-full bg-sage md:mx-10" />Let&apos;s Talk
             </a>
           ))}
