@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { site } from "@/data/site";
 import WhatsAppIcon from "./WhatsAppIcon";
@@ -7,8 +7,15 @@ import WhatsAppIcon from "./WhatsAppIcon";
 /** Sticky bottom CTA bar on phones/tablets, shown only once the user has scrolled past the first fold. */
 export default function MobileCTABar() {
   const { scrollY } = useScroll();
-  const [show, setShow] = useState(false);
-  useMotionValueEvent(scrollY, "change", (y) => setShow(y > window.innerHeight * 0.9));
+  const [pastFold, setPastFold] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  useMotionValueEvent(scrollY, "change", (y) => setPastFold(y > window.innerHeight * 0.9));
+  useEffect(() => {
+    const onMenu = (e: Event) => setMenuOpen((e as CustomEvent<{ open: boolean }>).detail.open);
+    window.addEventListener("shipit:menu", onMenu);
+    return () => window.removeEventListener("shipit:menu", onMenu);
+  }, []);
+  const show = pastFold && !menuOpen;
   return (
     <AnimatePresence>
       {show && (

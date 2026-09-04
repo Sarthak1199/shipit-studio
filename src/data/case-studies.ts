@@ -67,7 +67,7 @@ export const caseStudies: CaseStudy[] = [
     build: "#Build02",
     industryShort: "Fintech",
     cover: "/media/cases/dotpe-1.jpg",
-    gallery: ["/media/cases/dotpe-1.jpg"],
+    gallery: ["/media/cases/dotpe-1.jpg", "/media/cases/dotpe-2.jpg"],
     logo: "/logos/dotpe.jpg",
     accent: "#E63A2E",
     problem: "CRM sales, onboarding, and adoption data for merchants lived across scattered Redash queries and manually-updated Google Sheets. There was no single merchant profile — sales, ops, and leadership each pieced together their own view, and weekly reporting meant screenshotting dashboards into emails that often broke on size limits.",

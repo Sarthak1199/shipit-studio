@@ -21,6 +21,7 @@ export default function Nav() {
     const l = getLenis();
     if (open) { l?.stop(); document.body.style.overflow = "hidden"; }
     else { l?.start(); document.body.style.overflow = ""; }
+    window.dispatchEvent(new CustomEvent("shipit:menu", { detail: { open } }));
     return () => { l?.start(); document.body.style.overflow = ""; };
   }, [open]);
   useEffect(() => { setOpen(false); }, [pathname]);
