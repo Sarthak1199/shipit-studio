@@ -2,14 +2,12 @@
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { buildPrompt } from "@/data/prompt";
 
 const HEADLINE = "Built in 1 day. Backend and frontend. By Claude Fable 5.1.";
 
 export default function EasterEgg() {
   const [open, setOpen] = useState(false);
   const [typed, setTyped] = useState("");
-  const [showPrompt, setShowPrompt] = useState(false);
 
   useEffect(() => {
     const on = () => setOpen(true);
@@ -18,7 +16,7 @@ export default function EasterEgg() {
   }, []);
 
   useEffect(() => {
-    if (!open) { setTyped(""); setShowPrompt(false); return; }
+    if (!open) { setTyped(""); return; }
     let i = 0;
     const id = setInterval(() => { i += 1; setTyped(HEADLINE.slice(0, i)); if (i >= HEADLINE.length) clearInterval(id); }, 26);
     const esc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
@@ -77,22 +75,6 @@ export default function EasterEgg() {
                   </div>
                 ))}
               </dl>
-
-              <button type="button" onClick={() => setShowPrompt((v) => !v)} aria-expanded={showPrompt}
-                className="mt-5 inline-flex min-h-[44px] items-center gap-2 font-display text-lg font-semibold text-moss hover:underline">
-                {showPrompt ? "Hide the prompt" : "See the prompt used"}
-                <span className={`transition-transform ${showPrompt ? "rotate-90" : ""}`}>→</span>
-              </button>
-              <AnimatePresence initial={false}>
-                {showPrompt && (
-                  <motion.div key="prompt" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-                    <pre className="mt-3 max-h-[40vh] select-none overflow-y-auto whitespace-pre-wrap rounded-2xl border border-line bg-bg p-4 font-mono text-[12px] leading-relaxed text-ink/85" onContextMenu={(e) => e.preventDefault()} data-lenis-prevent>
-                      {buildPrompt}
-                    </pre>
-                    <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.18em] text-muted">View only</p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         </motion.div>

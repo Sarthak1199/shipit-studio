@@ -33,7 +33,7 @@ export default function Testimonials() {
         <motion.div ref={track} drag="x" dragConstraints={{ left: -limit, right: 0 }} dragElastic={0.12} className="flex cursor-grab gap-5 pr-10 active:cursor-grabbing">
           {items.map((t) => (
             <figure key={t.name} className="card flex w-[78vw] shrink-0 select-none flex-col justify-between p-7 sm:w-[520px] sm:p-9">
-              <span className="font-display text-6xl leading-none text-sage">“</span>
+              <p className="eyebrow">Get the quote</p>
               <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{t.quote}</blockquote>
               <figcaption className="mt-8 flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-moss font-display text-sm text-bg">{t.name[0]}</span>

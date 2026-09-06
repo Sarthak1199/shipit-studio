@@ -74,8 +74,8 @@ export default function HeroMac() {
         <div ref={sub} className="absolute inset-x-0 top-[66%] px-5 text-center md:top-[70%]">
           <div className="relative">
             <div aria-hidden className="pointer-events-none absolute inset-x-8 -inset-y-6 mx-auto max-w-lg rounded-full bg-bg/55 blur-2xl" />
-            <p className="relative h-display text-[clamp(1.3rem,2.8vw,2rem)] text-moss [text-shadow:0_2px_18px_rgba(250,250,249,.95),0_1px_3px_rgba(250,250,249,1)]">
-              {site.tagline}
+            <p className="relative h-display text-[clamp(1.3rem,2.8vw,2rem)] text-ink [text-shadow:0_2px_18px_rgba(250,250,249,.95),0_1px_3px_rgba(250,250,249,1)]">
+              We design, deploy, and <em className="text-moss">manage AI systems</em> for enterprises.
             </p>
           </div>
           <div className="mt-4 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-3">

@@ -23,14 +23,8 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
 
   return (
     <>
-      <div className="z-30 md:sticky md:top-[80px]">
-        <div className="container-x">
-          <Link href="/case-studies" className="glass inline-flex min-h-[44px] items-center gap-2 rounded-full border border-line px-4 font-mono text-xs uppercase tracking-[0.18em] text-muted shadow-soft hover:text-ink">← All case studies</Link>
-        </div>
-      </div>
-
       <section className="relative overflow-hidden pt-24 sm:pt-28">
-        <div aria-hidden className="absolute inset-x-0 top-0 -z-10 h-[70vh] bg-[linear-gradient(180deg,#DFE7EC_0%,#F5F5F0_100%)]" />
+        <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,#DFE7EC_0%,#F5F5F0_60%)]" />
         <div className="container-x">
           <Reveal>
             <Item>
@@ -145,7 +139,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <Reveal amount={0.3}>
               <Item>
                 <figure className="card mx-auto max-w-3xl p-8 sm:p-10">
-                  <span className="font-display text-5xl leading-none text-muted">“</span>
+                  <p className="eyebrow">Get the quote</p>
                   <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{cs.testimonial.quote}</blockquote>
                   <figcaption className="mt-6 text-muted"><span className="font-semibold text-ink">{cs.testimonial.name}</span> · {cs.testimonial.role}</figcaption>
                 </figure>

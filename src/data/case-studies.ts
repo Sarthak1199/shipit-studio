@@ -152,6 +152,37 @@ export const caseStudies: CaseStudy[] = [
       image: "/media/cases/qcom-spy-agents-architecture.svg",
     },
   },
+  {
+    slug: "dotpe-horizon",
+    client: "DotPe Horizon",
+    industry: "Restaurant tech · AI analytics",
+    headline: "Disconnected dashboards out. One decision layer in.",
+    summary: "One AI layer replaces disconnected POS and QR dashboards. Owners see what happened, why, and what to do next.",
+    metrics: [{ value: "₹5L", label: "/month saved" }, { value: "3 days", label: "faster decisions" }, { value: "2", label: "fewer people to manage data" }],
+    build: "#Build05",
+    industryShort: "Restaurant tech",
+    cover: "/media/cases/dotpe-horizon-1.jpg",
+    gallery: ["/media/cases/dotpe-horizon-1.jpg", "/media/cases/dotpe-horizon-2.jpg"],
+    logo: "/logos/dotpe.jpg",
+    accent: "#E63A2E",
+    problem: "Owners, CFOs, and managers each read their own dashboard. Rista POS and DotPe QR data lived apart. Margin leaks and stock outs went unnoticed until the revenue was already gone.",
+    solution: "Horizon merges POS and QR data into one AI insight layer. It ranks issues by severity, attaches a specific fix to each one, and lets an owner send that fix straight to WhatsApp in one click. A conversational panel lets them ask the data anything directly.",
+    process: "Built the pipeline first: nightly re-aggregation into 7/30/60/90 day windows, two Python scripts per window compressing each slice into a sales and customer briefing, then one Claude call per window turning those briefings into ranked insights. The dashboard reads only from precomputed views, so it never waits on AI.",
+    tech: {
+      stack: ["Python", "Claude Sonnet API (claude-sonnet-4-6)", "PostgreSQL materialized views"],
+      integrations: ["Rista POS", "DotPe QR", "WhatsApp Business API for one-click insight actions"],
+      deliverables: [
+        "Overview, Revenue Pulse, Menu IQ, Customer Engine, and Channels modules",
+        "Conversational query panel over merged POS and QR data",
+        "Nightly, severity-tagged insights with a recovery estimate on each",
+        "One-click insight-to-WhatsApp action loop",
+        "Rolling 7/30/60/90 day insight windows, regenerated daily without blocking the dashboard",
+      ],
+    },
+    architecture: {
+      text: "Raw data is aggregated daily, then sliced into 7/30/60/90 day windows. Parallel Python scripts compress each window into briefing JSON. Both briefings feed one Claude call per window, which returns ranked insights.",
+      image: "/media/cases/dotpe-horizon-architecture.svg",
+    },
+  },
 ];
-
 export const getCaseStudy = (slug: string) => caseStudies.find((c) => c.slug === slug);
