@@ -8,6 +8,7 @@ import CTABand from "@/components/CTABand";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ToolChip from "@/components/ToolChip";
 import { Reveal, Item } from "@/components/Reveal";
+import { site } from "@/data/site";
 
 export function generateStaticParams() { return caseStudies.map((c) => ({ slug: c.slug })); }
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
@@ -139,7 +140,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
             <Reveal amount={0.3}>
               <Item>
                 <figure className="card mx-auto max-w-3xl p-8 sm:p-10">
-                  <p className="eyebrow">Get the quote</p>
+                  <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-moss hover:underline">Get the quote →</a>
                   <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{cs.testimonial.quote}</blockquote>
                   <figcaption className="mt-6 text-muted"><span className="font-semibold text-ink">{cs.testimonial.name}</span> · {cs.testimonial.role}</figcaption>
                 </figure>

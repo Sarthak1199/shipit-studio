@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Reveal, Item } from "@/components/Reveal";
+import { site } from "@/data/site";
 
 const items = [
   { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder, Lexi's" },
@@ -33,7 +34,7 @@ export default function Testimonials() {
         <motion.div ref={track} drag="x" dragConstraints={{ left: -limit, right: 0 }} dragElastic={0.12} className="flex cursor-grab gap-5 pr-10 active:cursor-grabbing">
           {items.map((t) => (
             <figure key={t.name} className="card flex w-[78vw] shrink-0 select-none flex-col justify-between p-7 sm:w-[520px] sm:p-9">
-              <p className="eyebrow">Get the quote</p>
+              <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-moss hover:underline">Get the quote →</a>
               <blockquote className="mt-2 font-display text-xl leading-snug sm:text-2xl">{t.quote}</blockquote>
               <figcaption className="mt-8 flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-moss font-display text-sm text-bg">{t.name[0]}</span>

@@ -11,4 +11,6 @@ export const faqs: Faq[] = [
   { q: "What if it breaks after handover?", a: "We fix it. Builds come with a support window, and most clients stay on a light iteration plan because businesses change and tools should too." },
   { q: "Can you work with our existing tools?", a: "Usually yes: Slack, Sheets, your POS, your CRM, your inbox. If something has no API, we'll say so on the scope call instead of discovering it three weeks in." },
   { q: "What kinds of businesses do you work with?", a: "Restaurants, D2C, healthcare, pharma, finance. The industry matters less than whether the workflow is repetitive and currently done by hand." },
+  { q: "Who owns the delivered product?", a: "You do. Everything we build, backend, frontend, logic and algorithms, is yours outright once delivered." },
+  { q: "Is our data securely managed?", a: "Yes. We follow India's DPDP Act, or the relevant data protection law for your geography, on every build." },
 ];
