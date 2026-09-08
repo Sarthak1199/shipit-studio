@@ -36,17 +36,18 @@ export default function HeroMac() {
         { desktop: "(min-width: 768px)", mobile: "(max-width: 767px)", reduce: "(prefers-reduced-motion: reduce)" },
         (c) => {
           const { mobile, reduce } = c.conditions as { mobile: boolean; reduce: boolean };
-          if (reduce) { gsap.set([head.current, logosEl.current], { opacity: 1 }); return; }
+          if (reduce) { gsap.set([head.current, logosEl.current], { opacity: 1, pointerEvents: "auto" }); return; }
 
           gsap.fromTo(macInner.current, { y: 40, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 1.1, ease: "power3.out", delay: 0.15 });
           gsap.fromTo(sub.current, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: "power3.out", delay: 0.45 });
 
           const tl = gsap.timeline({ scrollTrigger: { trigger: outer.current, start: "top top", end: "bottom bottom", scrub: 0.7 } });
-          tl.to(sub.current, { y: -16, opacity: 0, duration: 0.28, ease: "power1.in" }, 0)
+          // pointerEvents rides along with opacity so a still-transparent layer can never eat clicks meant for the one under it
+          tl.to(sub.current, { y: -16, opacity: 0, pointerEvents: "none", duration: 0.28, ease: "power1.in" }, 0)
             .to(mac.current, { top: mobile ? "20%" : "22%", duration: 0.5, ease: "power2.inOut" }, 0)
             .to(macInner.current, { scale: mobile ? 0.5 : 0.46, duration: 0.5, ease: "power2.inOut" }, 0)
-            .fromTo(head.current, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.35, ease: "power2.out" }, 0.5)
-            .fromTo(logosEl.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.3, ease: "power2.out" }, 0.78);
+            .fromTo(head.current, { opacity: 0, y: 24 }, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.35, ease: "power2.out" }, 0.5)
+            .fromTo(logosEl.current, { opacity: 0, y: 16 }, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.3, ease: "power2.out" }, 0.78);
         }
       );
     }, outer);
@@ -85,7 +86,7 @@ export default function HeroMac() {
         </div>
 
         {/* headline — only exists once scroll reveals it, sitting BELOW the now-small Mac */}
-        <div ref={head} className="absolute inset-x-0 top-[46%] px-5 text-center opacity-0 md:top-[50%]">
+        <div ref={head} className="pointer-events-none absolute inset-x-0 top-[46%] px-5 text-center opacity-0 md:top-[50%]">
           <div className="relative">
             <div aria-hidden className="pointer-events-none absolute inset-x-0 -inset-y-8 mx-auto max-w-2xl rounded-full bg-bg/55 blur-2xl" />
             <h1 className="h-display relative mx-auto max-w-4xl text-[clamp(1.9rem,6vw,4.2rem)] text-ink [text-shadow:0_2px_18px_rgba(250,250,249,.9)]">
@@ -95,7 +96,7 @@ export default function HeroMac() {
         </div>
 
         {/* logo row — revealed last, same slot the subline vacated */}
-        <div ref={logosEl} className="absolute inset-x-0 top-[68%] px-5 text-center opacity-0 md:top-[72%]">
+        <div ref={logosEl} className="pointer-events-none absolute inset-x-0 top-[68%] px-5 text-center opacity-0 md:top-[72%]">
           <div className="relative">
             <div aria-hidden className="pointer-events-none absolute inset-x-8 -inset-y-6 mx-auto max-w-lg rounded-full bg-bg/55 blur-2xl" />
             <p className="relative font-brand text-[13px] font-semibold uppercase tracking-[0.22em] text-ink [text-shadow:0_2px_14px_rgba(250,250,249,1)] sm:text-sm">Built by. Built for.</p>

@@ -18,7 +18,6 @@ export type CaseStudy = {
   process: string;
   tech: Tech;
   architecture: { text: string; image?: string };
-  testimonial?: { quote: string; name: string; role: string };
 };
 
 // Content from ~/Documents/case studies/*.md (Sarthak, 2026-09-03).
@@ -87,7 +86,6 @@ export const caseStudies: CaseStudy[] = [
       text: "GRN photo → stored in Vercel Blob → Claude Vision OCR extracts line items → human review/edit → matched to PO (exact/fuzzy/manual) → stored in Postgres → GRN-first dashboard.",
       image: "/media/cases/lexis-sandwich-shop-architecture.svg",
     },
-    testimonial: { quote: "We used to reconcile invoices by hand every week. Sarthak built us a tool that put inwarding, GRNs and POs in one flow. Saved us hours, and we finally trust our numbers.", name: "Ayush Melwani", role: "Cofounder Lexi's" },
   },
   {
     slug: "dotpe-crm-internal-brain",
@@ -120,7 +118,6 @@ export const caseStudies: CaseStudy[] = [
       text: "Redash queries and the closures Google Sheet sync into Postgres via scheduled cron jobs, landing in a generic per-merchant snapshot table. Server Components read this via Prisma; a pure computation layer handles funnel/KPI/ARPU math separately from data fetching. A weekly cron renders a dependency-free HTML email report and sends it via Resend.",
       image: "/media/cases/dotpe-crm-internal-brain-architecture.svg",
     },
-    testimonial: { quote: "They turned our scattered CRM data and ops work into one live dashboard. Recovered 40% revenue by spotting gaps, saved hundreds of hours of manual work.", name: "Ram", role: "Dotpe CRM Lead" },
   },
   {
     slug: "qcom-spy-agents",
