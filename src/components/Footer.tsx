@@ -8,7 +8,7 @@ import EggStamp from "@/components/EggStamp";
 import { cn } from "@/lib/cn";
 
 const groups = [
-  { k: "Explore", items: [{ label: "Home", href: "/" }, { label: "Services", href: "/#services" }, { label: "Case studies", href: "/case-studies" }, { label: "Process", href: "/#process" }, { label: "FAQs", href: "/#faqs" }] },
+  { k: "Explore", items: [{ label: "Home", href: "/" }, { label: "Case studies", href: "/case-studies" }, { label: "Services", href: "/#services" }, { label: "Process", href: "/#process" }, { label: "FAQs", href: "/#faqs" }] },
   { k: "Utility", items: [{ label: "Privacy", href: "/privacy" }, { label: "Contact", href: "/contact" }] },
 ];
 

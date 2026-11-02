@@ -12,9 +12,9 @@ export default function Home() {
   return (
     <>
       <HeroMac />
+      <CaseStudies />
       <Services />
       <Quote />
-      <CaseStudies />
       <Testimonials />
       <Process />
       <About />

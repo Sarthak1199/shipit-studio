@@ -2,6 +2,12 @@ export const site = {
   name: "ShipIt Studio",
   tagline: "We design, deploy, and manage AI systems for enterprises.",
   calendly: "https://calendly.com/guptasarthak10-33sd/30min",
+  // The one thing every primary CTA sells. Same Calendly link, specific offer instead of "Contact us".
+  offer: {
+    short: "Free automation audit",
+    full: "Free 30-min automation audit",
+    promise: "We'll find your 3 biggest time-sinks.",
+  },
   whatsapp:
     "https://wa.me/919711994275?text=" +
     encodeURIComponent("Hi, I'd like to know more about ShipIt Studio."),
@@ -18,8 +24,8 @@ export const site = {
 
 export const navLinks = [
   { label: "Home", href: "/" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Services", href: "/#services" },
-    { label: "Case studies", href: "/case-studies" },
   { label: "Process", href: "/#process" },
   { label: "FAQs", href: "/#faqs" },
 ];

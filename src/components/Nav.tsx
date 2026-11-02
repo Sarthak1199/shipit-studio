@@ -68,7 +68,7 @@ export default function Nav() {
               </a>
             </Magnetic>
             <Magnetic strength={0.2}>
-              <a href={site.calendly} target="_blank" rel="noopener noreferrer" className={cn("btn px-4 text-[14px] transition-[height]", "bg-ink text-bg shadow-soft hover:bg-moss", compact ? "h-8" : "h-10")}>Contact us</a>
+              <a href={site.calendly} target="_blank" rel="noopener noreferrer" className={cn("btn px-4 text-[14px] transition-[height]", "bg-ink text-bg shadow-soft hover:bg-moss", compact ? "h-8" : "h-10")}>{site.offer.short}</a>
             </Magnetic>
           </div>
 
@@ -91,7 +91,7 @@ export default function Nav() {
             className="fixed inset-0 z-40 flex flex-col bg-bg px-6 pb-8 pt-20 lg:hidden">
             <motion.div initial="hidden" animate="show" exit="hidden" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } } }} className="flex h-full flex-col">
               <motion.div variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} className="flex gap-2">
-                <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-12 flex-1 text-[15px]">Contact us</a>
+                <a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-12 flex-1 text-[15px]">{site.offer.full}</a>
                 <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" className="btn btn-ghost h-12 w-14 px-0 text-[#25D366]"><WhatsAppIcon size={22} /></a>
               </motion.div>
               <nav className="mt-6 flex flex-col" aria-label="Mobile">

@@ -80,9 +80,10 @@ export default function HeroMac() {
             </p>
           </div>
           <div className="mt-4 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:gap-3">
-            <Magnetic><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-12 w-[min(78vw,240px)] px-8 sm:w-auto">Contact us</a></Magnetic>
-            <Magnetic><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-12 w-[min(78vw,240px)] gap-2 px-6 sm:w-auto"><WhatsAppIcon size={20} />WhatsApp</a></Magnetic>
+            <Magnetic><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-primary h-12 w-[min(86vw,300px)] px-6 sm:w-auto sm:px-8">{site.offer.full}</a></Magnetic>
+            <Magnetic><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn btn-ghost h-12 w-[min(86vw,300px)] gap-2 px-6 sm:w-auto"><WhatsAppIcon size={20} />WhatsApp</a></Magnetic>
           </div>
+          <p className="relative mt-3 text-[13px] font-medium text-ink [text-shadow:0_0_8px_rgba(250,250,249,1),0_1px_14px_rgba(250,250,249,1),0_0_24px_rgba(250,250,249,.9)]">{site.offer.promise}</p>
         </div>
 
         {/* headline — only exists once scroll reveals it, sitting BELOW the now-small Mac */}

@@ -5,7 +5,6 @@ import { Reveal, Item } from "@/components/Reveal";
 const services = [
   { n: "01", title: "Internal Tools & Dashboards", desc: "The dashboard your team asked for. Built around your data, your workflow, your bottlenecks.", video: "/media/internal-tool.mp4", tags: ["Live data", "Ops platforms"] },
   { n: "02", title: "Workflow Automation", desc: "Calendar, Slack, inbox, your internal software - wired together so approvals, follow-ups and reports run themselves.", video: "/media/automate.mp4", tags: ["Slack", "Email", "CRM"] },
-  { n: "03", title: "Brand Creatives", desc: "Get UGC ads, brand posts, ad video or website media without the shoot cost and timeline", video: "/media/brand.mp4", tags: ["UGC", "Video", "Social"] },
 ];
 
 export default function Services() {
@@ -16,7 +15,7 @@ export default function Services() {
           <Item><p className="eyebrow">Services</p></Item>
           <Item><h2 className="h-display mx-auto mt-4 max-w-3xl text-[clamp(2.2rem,5vw,3.9rem)]">Pick your headache.<br />We&apos;ll <em>automate</em> it.</h2></Item>
         </Reveal>
-        <Reveal className="mt-12 grid gap-5 md:mt-16 md:grid-cols-3">
+        <Reveal className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2">
           {services.map((s) => (
             <Item key={s.n} className="h-full">
               <TiltCard className="card flex h-full flex-col overflow-hidden p-3" max={5}>

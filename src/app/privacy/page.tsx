@@ -14,7 +14,7 @@ export default function Privacy() {
       <p className="eyebrow">Legal</p>
       <h1 className="h-display mt-4 text-[clamp(2.2rem,6vw,4rem)]">ShipIt Studio Privacy Policy</h1>
       <p className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-muted">Last updated: Sep 10, 2026</p>
-      <P>ShipIt Studio (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) provides AI-powered workflow automation, creative, and internal tooling services to businesses. This policy explains how we collect, use, and protect your information when you visit our website or engage our services.</P>
+      <P>ShipIt Studio (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) provides AI-powered workflow automation and internal tooling services to businesses. This policy explains how we collect, use, and protect your information when you visit our website or engage our services.</P>
 
       <H>Information We Collect</H>
       <UL items={[

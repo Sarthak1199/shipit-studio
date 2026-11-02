@@ -12,15 +12,15 @@ export default function CTABand() {
         <Marquee duration={26} mask={false}>
           {[0, 1, 2, 3].map((i) => (
             <a key={i} href={site.calendly} target="_blank" rel="noopener noreferrer" className="flex items-center font-display text-[clamp(2.6rem,8vw,6.5rem)] font-semibold leading-none tracking-tight">
-              <span className="mx-6 h-2 w-2 rounded-full bg-sage md:mx-10" />Let&apos;s Talk
+              <span className="mx-6 h-2 w-2 rounded-full bg-sage md:mx-10" />Free automation audit
             </a>
           ))}
         </Marquee>
       </div>
       <div className="container-x relative flex flex-col items-start gap-4 border-t border-bg/15 py-8 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-md text-bg/85">Pick a time, or just message. Either way you talk to the person building your tool.</p>
+        <p className="max-w-md text-bg/85"><span className="font-semibold text-bg">{site.offer.full}.</span> {site.offer.promise} Pick a time, or just message: you talk to the person building your tool.</p>
         <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <Magnetic><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-cream h-[52px] w-full px-8 sm:w-auto">Contact us</a></Magnetic>
+          <Magnetic><a href={site.calendly} target="_blank" rel="noopener noreferrer" className="btn btn-cream h-[52px] w-full px-8 sm:w-auto">{site.offer.full}</a></Magnetic>
           <Magnetic><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn h-[52px] w-full gap-2 border border-bg/40 px-6 text-bg hover:bg-bg/10 sm:w-auto"><WhatsAppIcon size={20} />WhatsApp</a></Magnetic>
         </div>
       </div>
